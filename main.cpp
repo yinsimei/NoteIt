@@ -1,13 +1,9 @@
 #include <QApplication>
-#include <QPushButton>
+#include "mainwindow.h"
+
 int main(int argc, char * argv[]) {
     QApplication app(argc, argv);
-
-    // Button Quit
-    QPushButton buttonQuit("Quitter");
-    buttonQuit.show();
-
-    QObject::connect(&buttonQuit, SIGNAL(clicked()), &app, SLOT(quit()));
-
+    MainWindow mw;
+    mw.show();
     return app.exec();
 }
