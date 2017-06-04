@@ -11,10 +11,15 @@ private:
     string text;
 
 public:
-    Article(const QDateTime & dc, const string &t)
+    Article(const QDateTime &dc, const string &t)
         : Note(dc, t), text("") {}
 
-    Article(const Article & a);
+    Article(const Article &a) : Note(a.getDateCreate(), a.getTitle()) {
+        setId(a.getId());
+        setDateModif(a.getDateModif());
+        setNoteStatus(a.getNoteStatus());
+        setText(a.getText());
+    }
 
     const string &getText() const {return text;}
     void setText(const string &tx) {text = tx;}

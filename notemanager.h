@@ -11,6 +11,12 @@
 
 using namespace std;
 
+enum EnumNoteType {
+    e_article,
+    e_task,
+    e_resource
+};
+
 class NotesException {
 private:
     string msg;
@@ -33,18 +39,21 @@ public:
     static NoteManager &getInstance();
     static void freeInstance();
 
+    // Articles
     Article *getLastestArticleVersion(int id);
     vector<Article *> &getArticleVersions(int id);
     vector<int> getArticles(EnumNoteStatus noteStatus);
     void addArticle(const Article& note);
     Article *editArticle(int id);
 
+    // Tasks
     Task *getLastestTaskVersion(int id);
     vector<Task *> &getTaskVersions(int id);
     vector<int> getTasks(EnumNoteStatus noteStatus);
     void addTask(const Task& note);
     Task *editTask(int id);
 
+    // Resources
     Resource *getLastestResourceVersion(int id);
     vector<Resource *> &getResourceVersions(int id);
     vector<int> getResources(EnumNoteStatus noteStatus);
@@ -54,6 +63,7 @@ public:
     void resetToVersion(int id, int index);
     void deleteNote(int id);
     void dropNote(int id);
+    EnumNoteType getNoteType(int id);
 };
 
 #endif // NOTEMANAGER_H

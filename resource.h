@@ -8,9 +8,9 @@ using namespace std;
 class Resource :  public Note {
 public:
     enum ResourceType{
-        image,
-        audio,
-        video
+        e_image,
+        e_audio,
+        e_video
     };
 
 private:
@@ -21,10 +21,8 @@ public:
     Resource(const QDateTime & dc, const string &t, ResourceType typ)
         : Note(dc, t), descp(""), url(""), type(typ) {}
 
-    Resource(const Resource & r) {
+    Resource(const Resource & r) : Note(r.getDateCreate(), r.getTitle()) {
         setId(r.getId());
-        setTitle(r.getTitle());
-        setDateCreate(r.getDateCreate());
         setDateModif(r.getDateModif());
         setNoteStatus(r.getNoteStatus());
         setDescp(r.getDescp());
@@ -45,19 +43,19 @@ public:
 class Image : public Resource {
 public:
     Image(const QDateTime &dc, const string &t)
-        : Resource(dc, t, image) {}
+        : Resource(dc, t, e_image) {}
 };
 
 class Audio : public Resource {
 public:
     Audio(const QDateTime & dc, const string &t)
-        : Resource(dc, t, audio) {}
+        : Resource(dc, t, e_audio) {}
 };
 
 class Video : public Resource {
 public:
     Video(const QDateTime & dc, const string &t)
-        : Resource(dc, t, video) {}
+        : Resource(dc, t, e_video) {}
 };
 
 #endif // RESSOURCE_H

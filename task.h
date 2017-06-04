@@ -9,17 +9,17 @@ using namespace std;
 class Task : public Note {
 public:
     enum EnumTaskStatus {
-        notStarted,
-        ongoing,
-        finished
+        e_notStarted,
+        e_ongoing,
+        e_finished
     };
 
     enum EnumPriority {
-        lowest,
-        low,
-        normal,
-        high,
-        highest
+        e_lowest,
+        e_low,
+        e_normal,
+        e_high,
+        e_highest
     };
 
 private:
@@ -29,12 +29,10 @@ private:
     EnumTaskStatus taskStatus;
 public:
     Task(const QDateTime & dc, const string &t)
-        : Note(dc, t), action(""), priority(highest), deadline(QDateTime::currentDateTime()), taskStatus(notStarted) {}
+        : Note(dc, t), action(""), priority(e_normal), deadline(QDateTime::currentDateTime()), taskStatus(e_notStarted) {}
 
-    Task(const Task & t) {
+    Task(const Task &t) : Note(t.getDateCreate(), t.getTitle()){
         setId(t.getId());
-        setTitle(t.getTitle());
-        setDateCreate(t.getDateCreate());
         setDateModif(t.getDateModif());
         setNoteStatus(t.getNoteStatus());
         setAction(t.getAction());

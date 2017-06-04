@@ -179,17 +179,17 @@ void NoteManager::deleteNote(int id){
     // Article
     if (articles.find(id) != articles.end()) {
         vector<Article *> &articleVersions = articles[id];
-        articleVersions.back()->setNoteStatus(deleted);
+        articleVersions.back()->setNoteStatus(e_deleted);
         return;
     }
     // Task
     if (tasks.find(id) != tasks.end()) {
         vector<Task *> &taskVersions = tasks[id];
-        taskVersions.back()->setNoteStatus(deleted);
+        taskVersions.back()->setNoteStatus(e_deleted);
     }
     if (resources.find(id) != resources.end()) {
         vector<Resource *> &resourceVersions = resources[id];
-        resourceVersions.back()->setNoteStatus(deleted);
+        resourceVersions.back()->setNoteStatus(e_deleted);
     }
      throw NotesException("ID not found");
 }
@@ -199,9 +199,8 @@ void NoteManager::dropNote(int id){
     //Article
     if (articles.find(id) != articles.end()) {
         vector<Article *> &articleVersions = articles[id];
-        for (int i = 0; i < articleVersions.size(); ++i) {
+        for (unsigned int i = 0; i < articleVersions.size(); ++i) {
             delete articleVersions[i];
-            articleVersions[i] == nullptr;
         }
         articles.erase(id);
         return;
@@ -210,9 +209,8 @@ void NoteManager::dropNote(int id){
     //Task
     if (tasks.find(id) != tasks.end()) {
         vector<Task *> &taskVersions = tasks[id];
-        for (int i = 0; i < taskVersions.size(); ++i) {
+        for (unsigned int i = 0; i < taskVersions.size(); ++i) {
             delete taskVersions[i];
-            taskVersions[i] == nullptr;
         }
         tasks.erase(id);
         return;
@@ -221,14 +219,22 @@ void NoteManager::dropNote(int id){
     //Resource
     if (resources.find(id) != resources.end()) {
         vector<Resource *> &resourceVersions = resources[id];
-        for (int i = 0; i < resourceVersions.size(); ++i) {
+        for (unsigned int i = 0; i < resourceVersions.size(); ++i) {
             delete resourceVersions[i];
-            resourceVersions[i] == nullptr;
         }
         resources.erase(id);
         return;
     }
 
      throw NotesException("ID not found");
+}
 
+EnumNoteType NoteManager::getNoteType(int id) {
+    if (articles.find(id) != articles.end())
+        return e_article;
+    if (tasks.find(id) != tasks.end())
+        return e_task;
+    if (resources.find(id) != resources.end())
+        return e_resource;
+    throw NotesException("ID not found");
 }
