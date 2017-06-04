@@ -1,6 +1,6 @@
 #ifndef RELATIONTREE_H
 #define RELATIONTREE_H
-
+#include "relationnode.h"
 
 class RelationTree
 {

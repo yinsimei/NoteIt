@@ -8,17 +8,14 @@
 #include "article.h"
 #include "task.h"
 #include "resource.h"
-#include "RelationTree.h"
-
-
-
+#include "relationtree.h"
+#include "relation.h"
 
 class RelationManager
 {
 private:
     static RelationManager* instance;
     vector<Relation *> relations;
-
 
 public:
     RelationManager();

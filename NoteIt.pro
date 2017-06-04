@@ -17,7 +17,8 @@ SOURCES += \
     notemanager.cpp \
     relationmanager.cpp \
     relationtree.cpp \
-    relationnode.cpp
+    relationnode.cpp \
+    relation.cpp
 
 DISTFILES +=
 
@@ -30,7 +31,8 @@ HEADERS += \
     resource.h \
     relationmanager.h \
     relationtree.h \
-    relationnode.h
+    relationnode.h \
+    relation.h
 
 FORMS += \
     mainwindow.ui

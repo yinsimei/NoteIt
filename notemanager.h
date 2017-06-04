@@ -53,7 +53,7 @@ public:
 
     void resetToVersion(int id, int index);
     void deleteNote(int id);
-    void archiveNote(int id);
+    void dropNote(int id);
 };
 
 #endif // NOTEMANAGER_H

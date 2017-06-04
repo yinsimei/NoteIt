@@ -1,6 +1,8 @@
 #ifndef RELATIONNODE_H
 #define RELATIONNODE_H
+#include <vector>
 
+using namespace std;
 
 class RelationNode
 {
