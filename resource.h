@@ -19,45 +19,45 @@ private:
     ResourceType type;
 public:
     Resource(const QDateTime & dc, const string &t, ResourceType typ)
-        : Note(dc, t), descp(""), Url(""), type(typ) {}
+        : Note(dc, t), descp(""), url(""), type(typ) {}
 
     Resource(const Resource & r) {
         setId(r.getId());
         setTitle(r.getTitle());
         setDateCreate(r.getDateCreate());
         setDateModif(r.getDateModif());
-        setNoteStatus(r.getStatus());
-        setDescp(r.getDescp);
+        setNoteStatus(r.getNoteStatus());
+        setDescp(r.getDescp());
         setUrl(r.getUrl());
         setType(r.getType());
     }
 
-    const string &getDescp() const {return descp;}
-    const string &getUrl() const {return url;}
-    ResourceType &getType() const {return type;}
+    const string &getDescp() const { return descp; }
+    const string &getUrl() const { return url; }
+    ResourceType getType() const { return type; }
 
-    void setDescp(const string &de) {descp = de;}
-    void setUrl(const string &u) {url = u;}
-    void setType(ResourceType ) {url = u;}
+    void setDescp(const string &de) { descp = de; }
+    void setUrl(const string &u) { url = u; }
+    void setType(ResourceType t) { type = t; }
 
 };
 
 class Image : public Resource {
 public:
-    Image(const QDateTime & dc, const string &t)
-        : Ressource(dc, t, image) {}
+    Image(const QDateTime &dc, const string &t)
+        : Resource(dc, t, image) {}
 };
 
 class Audio : public Resource {
 public:
     Audio(const QDateTime & dc, const string &t)
-        : Ressource(dc, t, audio) {}
+        : Resource(dc, t, audio) {}
 };
 
 class Video : public Resource {
 public:
     Video(const QDateTime & dc, const string &t)
-        : Ressource(dc, t, video) {}
+        : Resource(dc, t, video) {}
 };
 
 #endif // RESSOURCE_H

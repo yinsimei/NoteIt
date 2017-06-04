@@ -10,7 +10,7 @@
 
 NoteManager* NoteManager::instance = nullptr;
 
-NoteManager::NoteManager &NoteManager::getInstance(){
+NoteManager &NoteManager::getInstance(){
     if (!instance)
         instance =new NoteManager();
     return *instance;
@@ -39,8 +39,7 @@ Resource *NoteManager::getLastestResourceVersion(int id) {
 
 vector<Article *> &NoteManager::getArticleVersions(int id){
     if (articles.find(id) == articles.end()) {
-      throw NotesException("not found");
-        return null;
+        throw NotesException("not found");
     }
     return articles[id];
 
@@ -48,74 +47,72 @@ vector<Article *> &NoteManager::getArticleVersions(int id){
 
 vector<int> NoteManager::getArticles(EnumNoteStatus noteStatus){
     vector<int> res;
-    for (auto it = articles.begin(); it < articles.end(); ++it) {
-        if ((*it).back()->getStatus() == noteStatus) {
-            res.push_back(id);
+    for (auto it = articles.begin(); it != articles.end(); ++it) {
+        if (it->second.back()->getNoteStatus() == noteStatus) {
+            res.push_back(it->first);
         }
     }
     return res;
 }
 
 void NoteManager::addArticle(const Article& a){
-    vector<Article *> article = articles;
+    vector<Article *> article;
     Article* article_ptr = new Article(a);
     article_ptr->setId(cur_id);
     article.push_back(article_ptr);
+    articles[cur_id] = article;
     cur_id++;
 }
 
-Article* NoteManager::editArticle(int id){
+Article *NoteManager::editArticle(int id){
     if (articles.find(id) == articles.end()) {
-      throw NotesException("not found");
-        return null;
+        throw NotesException("Article not found");
     }
     vector<Article *> &articleVersions = articles[id];
-    Article *version_ptr = new Article(articles[id].back());
+    Article *version_ptr = new Article(*articleVersions.back());
     articleVersions.push_back(version_ptr);
-    return *version_ptr;
+    return version_ptr;
 }
 
-vector<Note *> NoteManager::getTaskVersions(int id){
+vector<Task *> &NoteManager::getTaskVersions(int id){
     if (tasks.find(id) == tasks.end()) {
-      throw NotesException("not found");
-        return null;
+        throw NotesException("not found");
     }
     return tasks[id];
 }
 
-vector<Note *> NoteManager::getTasks(EnumNoteStatus noteStatus){
+vector<int> NoteManager::getTasks(EnumNoteStatus noteStatus) {
     vector<int> res;
-    for (auto it = tasks.begin(); it < tasks.end(); ++it) {
-        if ((*it).back()->getStatus() == noteStatus) {
-            res.push_back(id);
+    for (auto it = tasks.begin(); it != tasks.end(); ++it) {
+        if (it->second.back()->getNoteStatus() == noteStatus) {
+            res.push_back(it->first);
         }
     }
     return res;
 }
 
 void NoteManager::addTask(const Task& t){
-    vector<Task *> task = tasks;
-    Task* task_ptr = new Task(t);
-    task_ptr->setId(cur_id);
-    task.push_back(task_ptr);
+    vector<Task *> task;
+    Task* article_ptr = new Task(t);
+    article_ptr->setId(cur_id);
+    task.push_back(article_ptr);
+    tasks[cur_id] = task;
     cur_id++;
 }
 
 Task* NoteManager::editTask(int id){
     if (tasks.find(id) == tasks.end()) {
-      throw NotesException("not found");
-        return null;
+        throw NotesException("not found");
     }
     vector<Task *> &taskVersions = tasks[id];
-    Task *version_ptr = new Task(tasks[id].back());
+    Task *version_ptr = new Task(*taskVersions.back());
     taskVersions.push_back(version_ptr);
-    return *version_ptr;
+    return version_ptr;
 }
 
-vector<Note *> NoteManager::getResourceVersions(int id){
+vector<Resource *> &NoteManager::getResourceVersions(int id){
     if (resources.find(id) == resources.end()) {
-      throw NotesException("not found");
-        return null;
+        throw NotesException("not found");
     }
     return resources[id];
 }
@@ -196,5 +193,4 @@ void NoteManager::deleteNote(int id){
         vector<Article *> &articleVersions = articles[id];
         delete articleVersions;
     }
-
 }

@@ -11,6 +11,14 @@
 
 using namespace std;
 
+class NotesException {
+private:
+    string msg;
+public:
+    NotesException(const string &m) : msg(m) {}
+    string getMsg() const { return msg; }
+};
+
 class NoteManager
 {
 private:
@@ -19,7 +27,7 @@ private:
     unordered_map<int, vector<Task *>> tasks;
     unordered_map<int, vector<Resource *>> resources;
     int cur_id;
-    NoteManager() : instance(this), cur_id(0) {}
+    NoteManager() : cur_id(0) {}
 
 public:
     static NoteManager &getInstance();
@@ -29,17 +37,19 @@ public:
     vector<Article *> &getArticleVersions(int id);
     vector<int> getArticles(EnumNoteStatus noteStatus);
     void addArticle(const Article& note);
-    Article* editArticle(int id);
+    Article *editArticle(int id);
 
-    vector<Task *> getTaskVersions(int id);
-    vector<Task *> getTasks(EnumNoteStatus noteStatus);
+    Task *getLastestTaskVersion(int id);
+    vector<Task *> &getTaskVersions(int id);
+    vector<int> getTasks(EnumNoteStatus noteStatus);
     void addTask(const Task& note);
-    Task* editTask(int id);
+    Task *editTask(int id);
 
-    vector<Resource *> getResourceVersions(int id);
-    vector<Resource *> getResources(EnumNoteStatus noteStatus);
-    void addResource(const Article& note);
-    Resource* editResource(int id);
+    Resource *getLastestResourceVersion(int id);
+    vector<Resource *> &getResourceVersions(int id);
+    vector<int> getResources(EnumNoteStatus noteStatus);
+    void addResource(const Resource& r);
+    Resource *editResource(int id);
 
     void resetToVersion(int id, int index);
     void deleteNote(int id);

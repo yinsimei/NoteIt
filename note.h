@@ -5,15 +5,14 @@
 
 using namespace std;
 
+enum  EnumNoteStatus {
+    active,
+    deleted,
+    archived
+};
+
 class Note
 {
-public:
-    enum  EnumNoteStatus {
-        active,
-        deleted,
-        archived
-    };
-
 protected:
     int id;
     string title;
@@ -22,9 +21,9 @@ protected:
     EnumNoteStatus noteStatus;
 
 public:
+    Note(void) : id(-1), dateCreate(QDateTime::currentDateTime()), title(""), dateModif(QDateTime::currentDateTime()), noteStatus(active) {}
     Note(const QDateTime &dc, const string &t)
         : id(-1), dateCreate(dc), title(t), dateModif(dc), noteStatus(active) {}
-
 
     int getId()const {return id;}
     EnumNoteStatus getNoteStatus() const { return noteStatus; }

@@ -14,7 +14,6 @@ SOURCES += \
     note.cpp \
     article.cpp \
     task.cpp \
-    ressource.cpp \
     notemanager.cpp \
     relationmanager.cpp \
     relationtree.cpp \

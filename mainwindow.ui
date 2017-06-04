@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>880</width>
+    <width>1046</width>
     <height>657</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
       <height>581</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="noteIconLayout">
+    <layout class="QVBoxLayout" name="noteIconButtonLayout">
      <item>
       <widget class="QPushButton" name="buttonArticle">
        <property name="sizePolicy">
@@ -194,7 +194,7 @@
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>250</x>
       <y>10</y>
       <width>41</width>
       <height>581</height>
@@ -204,35 +204,10 @@
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QToolButton" name="buttonTree">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>20</y>
-      <width>371</width>
-      <height>571</height>
-     </rect>
-    </property>
-    <layout class="QFormLayout" name="ArticleContentLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Titre</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
-     </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QPlainTextEdit" name="plainTextEdit"/>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QToolButton" name="toolButton">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
+      <x>1020</x>
       <y>10</y>
       <width>20</width>
       <height>581</height>
@@ -324,11 +299,125 @@
      </item>
     </layout>
    </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>10</y>
+      <width>41</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>10</y>
+      <width>331</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="articleContent">
+     <item>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Titre</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>327</width>
+          <height>542</height>
+         </rect>
+        </property>
+        <widget class="QPlainTextEdit" name="plainTextEdit">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>329</width>
+           <height>541</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>10</y>
+      <width>341</width>
+      <height>103</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="oldVersionsLayout">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Dernières versions</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListView" name="oldVersionList"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>120</y>
+      <width>341</width>
+      <height>219</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="relatedNotesLayout">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Notes annexées </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListView" name="listView_2"/>
+     </item>
+    </layout>
+   </widget>
+   <zorder>layoutWidget</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>line</zorder>
    <zorder>layoutWidget</zorder>
-   <zorder>toolButton</zorder>
+   <zorder>buttonTree</zorder>
+   <zorder>line_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>listView_2</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
@@ -336,7 +425,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>880</width>
+     <width>1046</width>
      <height>24</height>
     </rect>
    </property>
@@ -358,6 +447,7 @@
      <addaction name="actionAudio"/>
      <addaction name="actionVideo"/>
     </widget>
+    <addaction name="actionOpen"/>
     <addaction name="menuNew"/>
     <addaction name="menuAdd"/>
     <addaction name="actionSave"/>
@@ -465,6 +555,11 @@
   <action name="actionAbout_NoteIt">
    <property name="text">
     <string>About NoteIt</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open...</string>
    </property>
   </action>
  </widget>
