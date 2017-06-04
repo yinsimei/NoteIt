@@ -10,12 +10,29 @@ TEMPLATE = app
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    note.cpp \
+    article.cpp \
+    task.cpp \
+    notemanager.cpp \
+    relationmanager.cpp \
+    relationtree.cpp \
+    relationnode.cpp \
+    relation.cpp
 
 DISTFILES +=
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    note.h \
+    article.h \
+    task.h \
+    notemanager.h \
+    resource.h \
+    relationmanager.h \
+    relationtree.h \
+    relationnode.h \
+    relation.h
 
 FORMS += \
     mainwindow.ui
