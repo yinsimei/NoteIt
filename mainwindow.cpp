@@ -332,20 +332,28 @@ void MainWindow::on_actionArticle_triggered()
 
 void MainWindow::on_actionTask_triggered()
 {
-    setMainWindowState(e_trash_edit);
+    setMainWindowState(e_trash_no);
 }
 
 void MainWindow::on_actionAudio_triggered()
 {
-
+    setMainWindowState(e_resource_edit);
+    //ui->resource_typeText->setText();
 }
 
 void MainWindow::on_actionVideo_triggered()
 {
-
+    setMainWindowState(e_resource_edit);
+    //ui->resource_typeText->setText();
 }
 
 void MainWindow::on_actionImage_triggered()
 {
+    setMainWindowState(e_resource_edit);
+    //ui->resource_typeText->setText();
+}
 
+void MainWindow::on_actionQuitter_triggered()
+{
+    close();
 }

@@ -10,6 +10,6 @@ int main(int argc, char * argv[]) {
         mw.show();
         return app.exec();
     } catch (NotesException e) {
-        qDebug() << "Unhanded Exception: " << e.getMsg().c_str();
+        qDebug() << "Unhanded Exception: " << e.getMsg();
     }
 }

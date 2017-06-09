@@ -1,6 +1,6 @@
 #ifndef ARTICLE_H
 #define ARTICLE_H
-#include <string>
+#include <QString>
 #include "note.h"
 
 using namespace std;
@@ -8,10 +8,10 @@ using namespace std;
 class Article : public Note
 {
 private:
-    string text;
+    QString text;
 
 public:
-    Article(const QDateTime &dc, const string &t)
+    Article(const QDateTime &dc, const QString &t)
         : Note(dc, t), text("") {}
 
     Article(const Article &a) : Note(a.getDateCreate(), a.getTitle()) {
@@ -21,8 +21,8 @@ public:
         setText(a.getText());
     }
 
-    const string &getText() const {return text;}
-    void setText(const string &tx) {text = tx;}
+    const QString &getText() const {return text;}
+    void setText(const QString &tx) {text = tx;}
 };
 
 #endif // ARTICLE_H

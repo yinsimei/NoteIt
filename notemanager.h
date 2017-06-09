@@ -11,18 +11,12 @@
 
 using namespace std;
 
-enum EnumNoteType {
-    e_article,
-    e_task,
-    e_resource
-};
-
 class NotesException {
 private:
-    string msg;
+    QString msg;
 public:
-    NotesException(const string &m) : msg(m) {}
-    string getMsg() const { return msg; }
+    NotesException(const QString &m) : msg(m) {}
+    QString getMsg() const { return msg; }
 };
 
 class NoteManager

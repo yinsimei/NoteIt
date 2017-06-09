@@ -3,7 +3,6 @@
 
 #include <unordered_map>
 #include <vector>
-#include <string>
 
 #include "article.h"
 #include "task.h"

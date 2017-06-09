@@ -813,6 +813,8 @@
     <addaction name="menuNew"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_as"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuitter"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -873,6 +875,11 @@
   <action name="actionImage">
    <property name="text">
     <string>Image...</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="text">
+    <string>Quitter</string>
    </property>
   </action>
  </widget>

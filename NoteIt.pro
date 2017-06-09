@@ -18,7 +18,8 @@ SOURCES += \
     relationmanager.cpp \
     relationtree.cpp \
     relationnode.cpp \
-    relation.cpp
+    relation.cpp \
+    resource.cpp
 
 DISTFILES +=
 
@@ -32,7 +33,8 @@ HEADERS += \
     relationmanager.h \
     relationtree.h \
     relationnode.h \
-    relation.h
+    relation.h \
+    enums.h
 
 FORMS += \
     mainwindow.ui

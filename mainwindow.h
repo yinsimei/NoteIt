@@ -42,6 +42,18 @@ private slots:
 
     void on_tree_showHideButton_clicked();
 
+    void on_actionArticle_triggered();
+
+    void on_actionTask_triggered();
+
+    void on_actionAudio_triggered();
+
+    void on_actionVideo_triggered();
+
+    void on_actionImage_triggered();
+
+    void on_actionQuitter_triggered();
+
 private:
     Ui::MainWindow *ui;
 
