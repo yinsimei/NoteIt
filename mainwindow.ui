@@ -6,20 +6,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1055</width>
-    <height>715</height>
+    <width>1058</width>
+    <height>709</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <widget class="QWidget" name="mainWidget" native="true">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>10</y>
-      <width>1051</width>
+      <width>1061</width>
       <height>661</height>
      </rect>
     </property>
@@ -216,7 +228,7 @@
           <enum>QLayout::SetFixedSize</enum>
          </property>
          <item>
-          <widget class="QComboBox" name="comboBox">
+          <widget class="QComboBox" name="note_filter">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -250,7 +262,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QListView" name="listView">
+        <widget class="QListWidget" name="note_listWidget">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -296,7 +308,14 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="article_titleEdit"/>
+             <widget class="QLineEdit" name="article_titleEdit">
+              <property name="styleSheet">
+               <string notr="true">QLineEdit:disabled {
+background-color:#ffffff;
+color: #000000;
+}</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -310,15 +329,18 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>324</width>
+               <width>329</width>
                <height>96</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="gridLayout">
               <item row="0" column="0">
-               <widget class="QPlainTextEdit" name="article_textEdit">
-                <property name="plainText">
-                 <string/>
+               <widget class="QTextEdit" name="article_textEdit">
+                <property name="styleSheet">
+                 <string notr="true">QTextEdit:disabled {
+background-color:#ffffff;
+color: #000000;
+}</string>
                 </property>
                </widget>
               </item>
@@ -369,7 +391,14 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="resource_titleEdit"/>
+             <widget class="QLineEdit" name="resource_titleEdit">
+              <property name="styleSheet">
+               <string notr="true">QLineEdit:disabled {
+background-color:#ffffff;
+color: #000000;
+}</string>
+              </property>
+             </widget>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="resource_typeLabel">
@@ -398,6 +427,12 @@
                <widget class="QLineEdit" name="resource_url">
                 <property name="enabled">
                  <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit:disabled {
+background-color:#ffffff;
+color: #000000;
+}</string>
                 </property>
                </widget>
               </item>
@@ -435,15 +470,18 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>324</width>
+               <width>329</width>
                <height>96</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="gridLayout_3">
               <item row="1" column="0">
-               <widget class="QPlainTextEdit" name="resource_despEdit">
-                <property name="plainText">
-                 <string/>
+               <widget class="QTextEdit" name="resource_despEdit">
+                <property name="styleSheet">
+                 <string notr="true">QTextEdit:disabled {
+background-color:#ffffff;
+color: #000000;
+}</string>
                 </property>
                </widget>
               </item>
@@ -501,6 +539,12 @@
               <property name="enabled">
                <bool>true</bool>
               </property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit:disabled {
+background-color:#ffffff;
+color: #000000;
+}</string>
+              </property>
              </widget>
             </item>
             <item row="1" column="0">
@@ -510,10 +554,29 @@
               </property>
              </widget>
             </item>
+            <item row="1" column="1">
+             <widget class="QDateTimeEdit" name="task_ddlTimeEdit">
+              <property name="styleSheet">
+               <string notr="true">QDateTimeEdit:disabled {
+background-color:#ffffff;
+color: #000000;
+}</string>
+              </property>
+             </widget>
+            </item>
             <item row="2" column="0">
              <widget class="QLabel" name="task_statusLabel">
               <property name="text">
                <string>Etat</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QComboBox" name="task_statusComboBox">
+              <property name="styleSheet">
+               <string notr="true">QComboBox:disabled {
+color: #000000;
+}</string>
               </property>
              </widget>
             </item>
@@ -525,13 +588,13 @@
              </widget>
             </item>
             <item row="3" column="1">
-             <widget class="QComboBox" name="task_priorityEdit"/>
-            </item>
-            <item row="2" column="1">
-             <widget class="QComboBox" name="task_statusComboBox"/>
-            </item>
-            <item row="1" column="1">
-             <widget class="QDateTimeEdit" name="task_ddlTimeEdit"/>
+             <widget class="QComboBox" name="task_priorityEdit">
+              <property name="styleSheet">
+               <string notr="true">QComboBox:disabled {
+color: #000000;
+}</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
@@ -552,15 +615,18 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>324</width>
+               <width>329</width>
                <height>96</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="gridLayout_2">
               <item row="1" column="0">
-               <widget class="QPlainTextEdit" name="task_actionEdit">
-                <property name="plainText">
-                 <string/>
+               <widget class="QTextEdit" name="task_actionEdit">
+                <property name="styleSheet">
+                 <string notr="true">QTextEdit:disabled {
+background-color:#ffffff;
+color: #000000;
+}</string>
                 </property>
                </widget>
               </item>
@@ -617,6 +683,40 @@
          <item>
           <widget class="QWidget" name="note_versionWidget" native="true">
            <layout class="QVBoxLayout" name="oldVersionsLayout">
+            <item>
+             <widget class="QWidget" name="note_dateWidget" native="true">
+              <layout class="QFormLayout" name="formLayout_2">
+               <item row="0" column="0">
+                <widget class="QLabel" name="note_dateCreateLabel">
+                 <property name="text">
+                  <string>Création</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="note_dateModifLabel">
+                 <property name="text">
+                  <string>Modification</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLabel" name="note_dateCreateText">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLabel" name="note_dateModifText">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
             <item>
              <widget class="QLabel" name="label_oldVersions">
               <property name="text">
@@ -690,14 +790,14 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <item>
-            <widget class="QPushButton" name="trash_deleteButton">
+            <widget class="QPushButton" name="trash_restoreButton">
              <property name="text">
-              <string>Retaurer</string>
+              <string>Restaurer</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="trash_restoreButton">
+            <widget class="QPushButton" name="trash_deleteButton">
              <property name="text">
               <string>Supprimer défini</string>
              </property>
@@ -763,11 +863,17 @@
    <widget class="QWidget" name="treeWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>620</x>
       <y>20</y>
       <width>411</width>
       <height>641</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
@@ -777,7 +883,46 @@
     background: rgb(211, 215, 207);
 }</string>
     </property>
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Notes parents :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="listWidget">
+       <property name="styleSheet">
+        <string notr="true">background-color:#ffffff;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Notes enfants : </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="listWidget_2">
+       <property name="styleSheet">
+        <string notr="true">background-color:#ffffff;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Gestion de relations</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
+   <zorder>treeWidget</zorder>
+   <zorder>mainWidget</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
@@ -785,7 +930,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1055</width>
+     <width>1058</width>
      <height>24</height>
     </rect>
    </property>

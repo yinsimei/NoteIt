@@ -10,11 +10,15 @@ private:
     QString descp;
     QString url;
     ResourceType type;
+protected:
+    void setType(ResourceType t) { type = t; }
 public:
-    Resource(const QDateTime & dc, const QString &t, ResourceType typ)
-        : Note(dc, t), descp(""), url(""), type(typ) {}
+    Resource(ResourceType typ)
+        : Note(), descp(""), url(""), type(typ) {}
 
-    Resource(const Resource & r) : Note(r.getDateCreate(), r.getTitle()) {
+    Resource(const Resource & r) : Note() {
+        setDateCreate(r.getDateCreate());
+        setTitle(r.getTitle());
         setId(r.getId());
         setDateModif(r.getDateModif());
         setNoteStatus(r.getNoteStatus());
@@ -29,26 +33,6 @@ public:
 
     void setDescp(const QString &de) { descp = de; }
     void setUrl(const QString &u) { url = u; }
-    void setType(ResourceType t) { type = t; }
-
-};
-
-class Image : public Resource {
-public:
-    Image(const QDateTime &dc, const QString &t)
-        : Resource(dc, t, e_image) {}
-};
-
-class Audio : public Resource {
-public:
-    Audio(const QDateTime & dc, const QString &t)
-        : Resource(dc, t, e_audio) {}
-};
-
-class Video : public Resource {
-public:
-    Video(const QDateTime & dc, const QString &t)
-        : Resource(dc, t, e_video) {}
 };
 
 #endif // RESSOURCE_H

@@ -3,7 +3,7 @@
 
 #include <QMap>
 #include <QString>
-
+// Notes
 class EnumNames : public QMap<int,QString>
 {
 private:
@@ -19,15 +19,15 @@ public:
 
 enum  EnumNoteStatus {
     e_active,
-    e_deleted,
-    e_archived
+    e_deleted
 };
 const EnumNames noteStatusNames = EnumNames() << "Active" << "Supprimé" << "Archivé";
 
 enum EnumNoteType {
     e_article,
     e_task,
-    e_resource
+    e_resource,
+    e_all
 };
 
 enum ResourceType{

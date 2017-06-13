@@ -2,10 +2,17 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStringListModel>
+#include <QListWidgetItem>
+#include <vector>
+#include "enums.h"
+
+using namespace std;
 
 namespace Ui {
 class MainWindow;
 }
+class Note;
 
 class MainWindow : public QMainWindow
 {
@@ -54,6 +61,20 @@ private slots:
 
     void on_actionQuitter_triggered();
 
+    void on_note_resetVersionButton_clicked();
+
+    void on_trash_deleteButton_clicked();
+
+    void on_trash_restoreButton_clicked();
+
+    void on_note_deleteButton_clicked();
+
+    void on_note_manageRelationButton_clicked();
+
+    void on_note_listWidget_currentRowChanged(int currentRow);
+
+    void on_note_versionList_currentRowChanged(int currentRow);
+
 private:
     Ui::MainWindow *ui;
 
@@ -71,9 +92,44 @@ private:
         e_trash_no
     };
 
+    struct CurrentNoteListInfo{
+        int currId;
+        int currVer;
+        vector<int> id_notelist;
+        int currIdx() {
+            for (unsigned int i = 0; i < id_notelist.size(); ++i) {
+                if (id_notelist[i] == currId)
+                    return i;
+            }
+            return -1;
+        }
+        CurrentNoteListInfo() : currId(-1), currVer(-1) {}
+    };
+
     EnumWindowState currState;
     bool showTree;
+    CurrentNoteListInfo currInfo[e_all + 1];
+    bool clearingNoteList;
+    bool clearingVersionList;
+    bool clearingRelationList;
+
+    EnumNoteType getCurrentType();
+    void resetNoteList(EnumNoteType noteType, EnumNoteStatus noteStatus = e_active);
+    void setToNoteCommun(int id, int ver = -1);
+    void setToNote(int id, int ver = -1);
+    void setToArticle(int id, int ver = -1);
+    void setToTask(int id, int ver = -1);
+    void setToResource(int id, int ver = -1);
+    void onCreateResource(ResourceType type);
+
+    // show hide interface
     void setMainWindowState(EnumWindowState newStatus);
+    void showNoteCommon();
+    void hideNoteCommon();
+    void showTrash(EnumNoteType noteType);
+    void hideTrash();
+    void setNoteView(EnumNoteType noteType);
+    void setTrashView(int id);
 };
 
 #endif // MAINWINDOW_H

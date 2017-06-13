@@ -14,17 +14,16 @@ protected:
     QDateTime dateCreate;
     QDateTime dateModif;
     EnumNoteStatus noteStatus;
-
+    bool archived;
 public:
-    Note(void) : id(-1), title(""), dateCreate(QDateTime::currentDateTime()), dateModif(QDateTime::currentDateTime()), noteStatus(e_active) {}
-    Note(const QDateTime &dc, const QString &t)
-        : id(-1), title(t), dateCreate(dc), dateModif(dc), noteStatus(e_active) {}
-
+    Note() : id(-1), title(""), dateCreate(QDateTime::currentDateTime()),
+        dateModif(QDateTime::currentDateTime()), noteStatus(e_active), archived(false) {}
     int getId()const {return id;}
     EnumNoteStatus getNoteStatus() const { return noteStatus; }
-    const QString &getTitle() const {return title;}
-    const QDateTime &getDateCreate() const {return dateCreate;}
-    const QDateTime &getDateModif() const {return dateModif;}
+    const QString &getTitle() const { return title; }
+    const QDateTime &getDateCreate() const { return dateCreate; }
+    const QDateTime &getDateModif() const { return dateModif; }
+    bool isArchived() const { return archived; }
 
     void setId(int i){id = i;}
     void setTitle(const QString &t) {title = t;}

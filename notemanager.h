@@ -34,29 +34,37 @@ public:
     static void freeInstance();
 
     // Articles
+    Article *getArticle(int id, int version);
     Article *getLastestArticleVersion(int id);
     vector<Article *> &getArticleVersions(int id);
     vector<int> getArticles(EnumNoteStatus noteStatus);
-    void addArticle(const Article& note);
-    Article *editArticle(int id);
+    int addArticle(const Article& note);
 
     // Tasks
+    Task *getTask(int id, int version);
     Task *getLastestTaskVersion(int id);
     vector<Task *> &getTaskVersions(int id);
     vector<int> getTasks(EnumNoteStatus noteStatus);
-    void addTask(const Task& note);
-    Task *editTask(int id);
+    int addTask(const Task& note);
 
     // Resources
+    Resource *getResource(int id, int version);
     Resource *getLastestResourceVersion(int id);
     vector<Resource *> &getResourceVersions(int id);
     vector<int> getResources(EnumNoteStatus noteStatus);
-    void addResource(const Resource& r);
-    Resource *editResource(int id);
+    int addResource(const Resource& r);
 
+    // Notes
+    Note *getNote(int id, int version);
+    Note *getLastestNoteVersion(int id);
+    vector<Note *> getNoteVersions(int id);
+    vector<int> getNotes(EnumNoteType noteType, EnumNoteStatus noteStatus);
+    vector<int> getNotes(EnumNoteStatus noteStatus);
     void resetToVersion(int id, int index);
+    void restoreNote(int id);
     void deleteNote(int id);
     void dropNote(int id);
+
     EnumNoteType getNoteType(int id);
 };
 

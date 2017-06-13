@@ -13,10 +13,11 @@ private:
     QDateTime deadline;
     EnumTaskStatus taskStatus;
 public:
-    Task(const QDateTime & dc, const QString &t)
-        : Note(dc, t), action(""), priority(e_normal), deadline(QDateTime::currentDateTime()), taskStatus(e_notStarted) {}
+    Task() : Note(), action(""), priority(e_normal), deadline(QDateTime::currentDateTime()), taskStatus(e_notStarted) {}
 
-    Task(const Task &t) : Note(t.getDateCreate(), t.getTitle()){
+    Task(const Task &t) : Note(){
+        setDateCreate(t.getDateCreate());
+        setTitle(t.getTitle());
         setId(t.getId());
         setDateModif(t.getDateModif());
         setNoteStatus(t.getNoteStatus());

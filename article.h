@@ -11,10 +11,11 @@ private:
     QString text;
 
 public:
-    Article(const QDateTime &dc, const QString &t)
-        : Note(dc, t), text("") {}
+    Article() : Note(), text("") {}
 
-    Article(const Article &a) : Note(a.getDateCreate(), a.getTitle()) {
+    Article(const Article &a) : Note() {
+        setDateCreate(a.getDateCreate());
+        setTitle(a.getTitle());
         setId(a.getId());
         setDateModif(a.getDateModif());
         setNoteStatus(a.getNoteStatus());
