@@ -11,14 +11,12 @@ TEMPLATE = app
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    note.cpp \
-    article.cpp \
-    task.cpp \
     notemanager.cpp \
     relationmanager.cpp \
     relation.cpp \
-    resource.cpp \
-    addcouplediag.cpp
+    addcouplediag.cpp \
+    treeform.cpp \
+    relationwindow.cpp
 
 DISTFILES +=
 
@@ -32,11 +30,15 @@ HEADERS += \
     relationmanager.h \
     relation.h \
     enums.h \
-    addcouplediag.h
+    addcouplediag.h \
+    treeform.h \
+    relationwindow.h
 
 FORMS += \
     mainwindow.ui \
-    addcouplediag.ui
+    addcouplediag.ui \
+    treeform.ui \
+    relationwindow.ui
 
 RESOURCES += \
     resource.qrc

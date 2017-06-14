@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TreeForm</class>
+ <widget class="QWidget" name="TreeForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>527</width>
+    <height>725</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">border: 1px solid #79b06d; background:#a3eb93;</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item>
+    <widget class="QWidget" name="widgetBg" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Note concerned :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="tree_relationNameLabel">
+          <property name="text">
+           <string>NoteName</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QWidget" name="tree_notesWidget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Notes parents :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="tree_parentList">
+           <property name="styleSheet">
+            <string notr="true">background-color:#ffffff;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Notes enfants : </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="tree_childList">
+           <property name="styleSheet">
+            <string notr="true">background-color:#ffffff;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

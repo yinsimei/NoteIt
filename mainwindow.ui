@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1095</width>
-    <height>715</height>
+    <width>1109</width>
+    <height>888</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,694 +26,693 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <widget class="QWidget" name="mainWidget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>10</y>
-      <width>1101</width>
-      <height>661</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_6">
-     <item>
-      <layout class="QVBoxLayout" name="noteIconButtonLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout_11">
+    <item>
+     <widget class="QWidget" name="mainWidget" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
-        <widget class="QPushButton" name="buttonArticle">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Articles&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="resource.qrc">
-           <normaloff>:/image/img/Article.png</normaloff>:/image/img/Article.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>25</width>
-           <height>25</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="buttonTask">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tasks&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="resource.qrc">
-           <normaloff>:/image/img/Task.png</normaloff>:/image/img/Task.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>25</width>
-           <height>25</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="buttonResource">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ressources&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="resource.qrc">
-           <normaloff>:/image/img/Resource.png</normaloff>:/image/img/Resource.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>25</width>
-           <height>25</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="maximumSize">
-          <size>
-           <width>29</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="buttonTrash">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>40</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Corbeille&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="resource.qrc">
-           <normaloff>:/image/img/Trash.png</normaloff>:/image/img/Trash.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>25</width>
-           <height>25</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="noteListLayout">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetFixedSize</enum>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="sizeConstraint">
-          <enum>QLayout::SetFixedSize</enum>
-         </property>
+        <layout class="QVBoxLayout" name="noteIconButtonLayout">
          <item>
-          <widget class="QComboBox" name="task_filter">
+          <widget class="QPushButton" name="buttonArticle">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Articles&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/image/img/Article.png</normaloff>:/image/img/Article.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonTask">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tasks&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/image/img/Task.png</normaloff>:/image/img/Task.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonResource">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ressources&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/image/img/Resource.png</normaloff>:/image/img/Resource.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="maximumSize">
+            <size>
+             <width>29</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="buttonTrash">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
-             <width>180</width>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Corbeille&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/image/img/Trash.png</normaloff>:/image/img/Trash.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="noteListLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetFixedSize</enum>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="sizeConstraint">
+            <enum>QLayout::SetFixedSize</enum>
+           </property>
+           <item>
+            <widget class="QComboBox" name="task_filter">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>180</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QListWidget" name="note_listWidget">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>200</width>
              <height>16777215</height>
             </size>
            </property>
           </widget>
          </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="separator1">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="noteContentLayout">
          <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+          <widget class="QLabel" name="trash_noNote">
+           <property name="text">
+            <string>La corbeille est vide.</string>
            </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="article_allWidget" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <layout class="QFormLayout" name="formLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="article_titleLabel">
+                <property name="text">
+                 <string>Titre</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="article_titleEdit">
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit:disabled {
+background: #efefef;
+color: #000000;
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QScrollArea" name="article_scrollArea">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="article_textScrollAreaContent">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>343</width>
+                 <height>96</height>
+                </rect>
+               </property>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0">
+                 <widget class="QTextEdit" name="article_textEdit">
+                  <property name="styleSheet">
+                   <string notr="true">QTextEdit:disabled {
+background: #efefef;
+color: #000000;
+}</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="article_editWidget" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QPushButton" name="article_saveButton">
+                 <property name="text">
+                  <string>Sauvegarder</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="article_cancelButton">
+                 <property name="text">
+                  <string>Annuler</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="article_editButton">
+                 <property name="text">
+                  <string>Editer</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="resource_allWidget" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <layout class="QFormLayout" name="resource_titleLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="resource_titleLabel">
+                <property name="text">
+                 <string>Titre</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="resource_titleEdit">
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit:disabled {
+background: #efefef;
+color: #000000;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="resource_typeLabel">
+                <property name="text">
+                 <string>Type</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="resource_typeText">
+                <property name="text">
+                 <string>Image</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="resource_urlLabel">
+                <property name="text">
+                 <string>Url</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <layout class="QHBoxLayout" name="resource_urlLayout">
+                <item>
+                 <widget class="QLineEdit" name="resource_url">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit:disabled {
+background:#e9e9e9;
+color: #000000;
+}</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="resource_urlSelect">
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="resource_openUrlButton">
+                  <property name="text">
+                   <string>Ouvrir</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="resource_despLabel">
+              <property name="text">
+               <string>Description</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QScrollArea" name="resource_descpArea">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="resource_despScrollArea">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>343</width>
+                 <height>96</height>
+                </rect>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_3">
+                <item row="1" column="0">
+                 <widget class="QTextEdit" name="resource_despEdit">
+                  <property name="styleSheet">
+                   <string notr="true">QTextEdit:disabled {
+background: #efefef;
+color: #000000;
+}</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="resource_editWidget" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <widget class="QPushButton" name="resource_saveButton">
+                 <property name="text">
+                  <string>Sauvegarder</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="resource_cancelButton">
+                 <property name="text">
+                  <string>Annuler</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="resource_editButton">
+                 <property name="text">
+                  <string>Editer</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+           <zorder>resource_descpArea</zorder>
+           <zorder>resource_editWidget</zorder>
+           <zorder>resource_despLabel</zorder>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="task_allWidget" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <layout class="QFormLayout" name="task_optionsLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="task_titleLabel">
+                <property name="text">
+                 <string>Titre</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="task_titleEdit">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit:disabled {
+background: #efefef;
+color: #000000;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="task_ddlLabel">
+                <property name="text">
+                 <string>Delais</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QDateTimeEdit" name="task_ddlTimeEdit">
+                <property name="styleSheet">
+                 <string notr="true">QDateTimeEdit:disabled {
+background: #efefef;
+color: #000000;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="task_statusLabel">
+                <property name="text">
+                 <string>Etat</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="task_statusComboBox">
+                <property name="styleSheet">
+                 <string notr="true">QComboBox:disabled {
+color: #000000;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="task_priorityLabel">
+                <property name="text">
+                 <string>Priorité</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QComboBox" name="task_priorityEdit">
+                <property name="styleSheet">
+                 <string notr="true">QComboBox:disabled {
+color: #000000;
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="task_actionLabel">
+              <property name="text">
+               <string>Action</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QScrollArea" name="task_scrollArea">
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="task_scrollAreaContent">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>343</width>
+                 <height>96</height>
+                </rect>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <item row="1" column="0">
+                 <widget class="QTextEdit" name="task_actionEdit">
+                  <property name="styleSheet">
+                   <string notr="true">QTextEdit:disabled {
+background: #efefef;
+color: #000000;
+}</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="task_editWidget" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QPushButton" name="task_saveButton">
+                 <property name="text">
+                  <string>Sauvegarder</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="task_cancelButton">
+                 <property name="text">
+                  <string>Annuler</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="task_editButton">
+                 <property name="text">
+                  <string>Editer</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+           <zorder>task_scrollArea</zorder>
+           <zorder>task_editWidget</zorder>
+           <zorder>task_actionLabel</zorder>
+          </widget>
          </item>
         </layout>
        </item>
        <item>
-        <widget class="QListWidget" name="note_listWidget">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>200</width>
-           <height>16777215</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="Line" name="separator1">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="noteContentLayout">
-       <item>
-        <widget class="QLabel" name="trash_noNote">
-         <property name="text">
-          <string>La corbeille est vide.</string>
+        <widget class="Line" name="separator2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="article_allWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <layout class="QFormLayout" name="formLayout">
+        <layout class="QVBoxLayout" name="note_infoLayout">
+         <item>
+          <widget class="QWidget" name="note_dateWidget" native="true">
+           <layout class="QFormLayout" name="formLayout_2">
             <item row="0" column="0">
-             <widget class="QLabel" name="article_titleLabel">
+             <widget class="QLabel" name="note_dateCreateLabel">
               <property name="text">
-               <string>Titre</string>
+               <string>Création</string>
               </property>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="article_titleEdit">
-              <property name="styleSheet">
-               <string notr="true">QLineEdit:disabled {
-background-color:#ffffff;
-color: #000000;
-}</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QScrollArea" name="article_scrollArea">
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="article_textScrollAreaContent">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>349</width>
-               <height>96</height>
-              </rect>
-             </property>
-             <layout class="QGridLayout" name="gridLayout">
-              <item row="0" column="0">
-               <widget class="QTextEdit" name="article_textEdit">
-                <property name="styleSheet">
-                 <string notr="true">QTextEdit:disabled {
-background-color:#ffffff;
-color: #000000;
-}</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QWidget" name="article_editWidget" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
-             <item>
-              <widget class="QPushButton" name="article_saveButton">
-               <property name="text">
-                <string>Sauvegarder</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="article_cancelButton">
-               <property name="text">
-                <string>Annuler</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="article_editButton">
-               <property name="text">
-                <string>Editer</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="resource_allWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <layout class="QFormLayout" name="resource_titleLayout">
-            <item row="0" column="0">
-             <widget class="QLabel" name="resource_titleLabel">
+             <widget class="QLabel" name="note_dateCreateText">
               <property name="text">
-               <string>Titre</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="resource_titleEdit">
-              <property name="styleSheet">
-               <string notr="true">QLineEdit:disabled {
-background-color:#ffffff;
-color: #000000;
-}</string>
+               <string/>
               </property>
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="resource_typeLabel">
+             <widget class="QLabel" name="note_dateModifLabel">
               <property name="text">
-               <string>Type</string>
+               <string>Modification</string>
               </property>
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLabel" name="resource_typeText">
+             <widget class="QLabel" name="note_dateModifText">
               <property name="text">
-               <string>Image</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="resource_urlLabel">
-              <property name="text">
-               <string>Url</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <layout class="QHBoxLayout" name="resource_urlLayout">
-              <item>
-               <widget class="QLineEdit" name="resource_url">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QLineEdit:disabled {
-background-color:#ffffff;
-color: #000000;
-}</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="resource_urlSelect">
-                <property name="maximumSize">
-                 <size>
-                  <width>30</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QLabel" name="resource_despLabel">
-            <property name="text">
-             <string>Description</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QScrollArea" name="resource_descpArea">
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="resource_despScrollArea">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>349</width>
-               <height>96</height>
-              </rect>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_3">
-              <item row="1" column="0">
-               <widget class="QTextEdit" name="resource_despEdit">
-                <property name="styleSheet">
-                 <string notr="true">QTextEdit:disabled {
-background-color:#ffffff;
-color: #000000;
-}</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QWidget" name="resource_editWidget" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <item>
-              <widget class="QPushButton" name="resource_saveButton">
-               <property name="text">
-                <string>Sauvegarder</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="resource_cancelButton">
-               <property name="text">
-                <string>Annuler</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="resource_editButton">
-               <property name="text">
-                <string>Editer</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-         <zorder>resource_descpArea</zorder>
-         <zorder>resource_editWidget</zorder>
-         <zorder>resource_despLabel</zorder>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="task_allWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <layout class="QFormLayout" name="task_optionsLayout">
-            <item row="0" column="0">
-             <widget class="QLabel" name="task_titleLabel">
-              <property name="text">
-               <string>Titre</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="task_titleEdit">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLineEdit:disabled {
-background-color:#ffffff;
-color: #000000;
-}</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="task_ddlLabel">
-              <property name="text">
-               <string>Delais</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QDateTimeEdit" name="task_ddlTimeEdit">
-              <property name="styleSheet">
-               <string notr="true">QDateTimeEdit:disabled {
-background-color:#ffffff;
-color: #000000;
-}</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="task_statusLabel">
-              <property name="text">
-               <string>Etat</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QComboBox" name="task_statusComboBox">
-              <property name="styleSheet">
-               <string notr="true">QComboBox:disabled {
-color: #000000;
-}</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="task_priorityLabel">
-              <property name="text">
-               <string>Priorité</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QComboBox" name="task_priorityEdit">
-              <property name="styleSheet">
-               <string notr="true">QComboBox:disabled {
-color: #000000;
-}</string>
+               <string/>
               </property>
              </widget>
             </item>
            </layout>
-          </item>
-          <item>
-           <widget class="QLabel" name="task_actionLabel">
-            <property name="text">
-             <string>Action</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QScrollArea" name="task_scrollArea">
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="task_scrollAreaContent">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>349</width>
-               <height>96</height>
-              </rect>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_2">
-              <item row="1" column="0">
-               <widget class="QTextEdit" name="task_actionEdit">
-                <property name="styleSheet">
-                 <string notr="true">QTextEdit:disabled {
-background-color:#ffffff;
-color: #000000;
-}</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QWidget" name="task_editWidget" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <item>
-              <widget class="QPushButton" name="task_saveButton">
-               <property name="text">
-                <string>Sauvegarder</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="task_cancelButton">
-               <property name="text">
-                <string>Annuler</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="task_editButton">
-               <property name="text">
-                <string>Editer</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-         <zorder>task_scrollArea</zorder>
-         <zorder>task_editWidget</zorder>
-         <zorder>task_actionLabel</zorder>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="Line" name="separator2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="note_infoLayout">
-       <item>
-        <widget class="QWidget" name="note_dateWidget" native="true">
-         <layout class="QFormLayout" name="formLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="note_dateCreateLabel">
-            <property name="text">
-             <string>Création</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="note_dateCreateText">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="note_dateModifLabel">
-            <property name="text">
-             <string>Modification</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="note_dateModifText">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
+          </widget>
+         </item>
          <item>
           <widget class="QWidget" name="note_versionWidget" native="true">
            <layout class="QVBoxLayout" name="oldVersionsLayout">
@@ -754,222 +753,180 @@ color: #000000;
            </layout>
           </widget>
          </item>
+         <item>
+          <widget class="QWidget" name="note_relationWidget" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <item>
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Relation : </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="note_relationSelect"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QListWidget" name="note_relationCoupleList"/>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QPushButton" name="note_manageRelationButton">
+                <property name="text">
+                 <string>Gestion de relation</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <item>
+                 <spacer name="horizontalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="note_addCoupleButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>+</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="note_deleteCoupleButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>-</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="note_deleteButton">
+           <property name="text">
+            <string>Supprimer note</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="trash_buttonWidget" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>70</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QPushButton" name="trash_restoreButton">
+                <property name="text">
+                 <string>Restaurer</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="trash_deleteButton">
+                <property name="text">
+                 <string>Supprimer défini</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>70</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
         </layout>
        </item>
        <item>
-        <widget class="QWidget" name="note_relationWidget" native="true">
-         <layout class="QFormLayout" name="formLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Relation : </string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QComboBox" name="note_relationSelect"/>
-          </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QListWidget" name="note_relationCoupleList"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QPushButton" name="note_manageRelationButton">
-            <property name="text">
-             <string>Gestion de relation</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <layout class="QHBoxLayout" name="horizontalLayout_8">
-            <item>
-             <widget class="QPushButton" name="note_addCoupleButton">
-              <property name="minimumSize">
-               <size>
-                <width>27</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>27</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>+</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="note_deleteCoupleButton">
-              <property name="minimumSize">
-               <size>
-                <width>27</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>27</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>-</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="note_deleteButton">
+        <widget class="QToolButton" name="tree_showHideButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>20</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
-          <string>Supprimer note</string>
+          <string>&lt;</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QWidget" name="trash_buttonWidget" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>70</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_5">
-            <item>
-             <widget class="QPushButton" name="trash_restoreButton">
-              <property name="text">
-               <string>Restaurer</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="trash_deleteButton">
-              <property name="text">
-               <string>Supprimer défini</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>70</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
-       </item>
       </layout>
-     </item>
-     <item>
-      <widget class="QToolButton" name="tree_showHideButton">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>20</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>&lt;</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-    <zorder>separator2</zorder>
-    <zorder>tree_showHideButton</zorder>
-    <zorder>separator1</zorder>
-   </widget>
-   <widget class="QWidget" name="treeWidget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>20</y>
-      <width>411</width>
-      <height>641</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QWidget {
-    background: rgb(211, 215, 207);
-}</string>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_6">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Notes parents :</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QListWidget" name="listWidget">
-       <property name="styleSheet">
-        <string notr="true">background-color:#ffffff;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Notes enfants : </string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QListWidget" name="listWidget_2">
-       <property name="styleSheet">
-        <string notr="true">background-color:#ffffff;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Gestion de relations</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <zorder>treeWidget</zorder>
-   <zorder>mainWidget</zorder>
+      <zorder>separator2</zorder>
+      <zorder>tree_showHideButton</zorder>
+      <zorder>separator1</zorder>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
@@ -977,7 +934,7 @@ color: #000000;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1095</width>
+     <width>1109</width>
      <height>24</height>
     </rect>
    </property>

@@ -8,6 +8,8 @@
 #include "enums.h"
 #include "relation.h"
 #include "addcouplediag.h"
+#include "treeform.h"
+#include "relationwindow.h"
 
 using namespace std;
 
@@ -28,66 +30,41 @@ private slots:
     void on_article_editButton_clicked();
     void on_article_saveButton_clicked();
     void on_article_cancelButton_clicked();
-
     void on_resource_saveButton_clicked();
-
     void on_resource_editButton_clicked();
-
     void on_resource_cancelButton_clicked();
-
     void on_task_editButton_clicked();
-
     void on_task_cancelButton_clicked();
-
     void on_task_saveButton_clicked();
-
     void on_buttonArticle_clicked();
-
     void on_buttonTask_clicked();
-
     void on_buttonResource_clicked();
-
     void on_buttonTrash_clicked();
-
     void on_tree_showHideButton_clicked();
-
     void on_actionArticle_triggered();
-
     void on_actionTask_triggered();
-
     void on_actionAudio_triggered();
-
     void on_actionVideo_triggered();
-
     void on_actionImage_triggered();
-
     void on_actionQuitter_triggered();
-
     void on_note_resetVersionButton_clicked();
-
     void on_trash_deleteButton_clicked();
-
     void on_trash_restoreButton_clicked();
-
     void on_note_deleteButton_clicked();
-
     void on_note_manageRelationButton_clicked();
-
     void on_note_listWidget_currentRowChanged(int currentRow);
-
     void on_note_versionList_currentRowChanged(int currentRow);
-
     void on_note_relationSelect_currentIndexChanged(const QString &arg1);
-
     void on_note_addCoupleButton_clicked();
-
     void on_note_deleteCoupleButton_clicked();
-
     void on_note_relationCoupleList_currentRowChanged(int currentRow);
+    void on_treeitem_doubleclick(int id);
 
 private:
     Ui::MainWindow *ui;
     AddCoupleDiag *addCoupleDiag;
+    TreeForm *treeForm;
+    RelationWindow *relationWindow;
 
     enum EnumWindowState {
         e_default,
@@ -127,7 +104,7 @@ private:
     };
 
     EnumWindowState currState;
-    bool showTree;
+    bool isTreeShown;
     CurrentNoteListInfo currNoteInfo[e_all + 1];
     CurrentRelationListInfo currRelationInfo;
     bool clearingNoteList;
@@ -151,6 +128,8 @@ private:
     void hideNoteCommon();
     void showTrash(EnumNoteType noteType);
     void hideTrash();
+    void showTree();
+    void hideTree();
     void setNoteView(EnumNoteType noteType);
     void setTrashView(int id);
 };

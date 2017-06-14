@@ -1,4 +1,5 @@
 #include <QtGlobal>
+#include <QMessageBox>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "notemanager.h"
@@ -7,6 +8,7 @@
 #include "resource.h"
 #include "notemanager.h"
 #include "relationmanager.h"
+#include "treeform.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,9 +17,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setMainWindowState(e_default);
     addCoupleDiag = new AddCoupleDiag(this);
+    treeForm = new TreeForm(this);
+    relationWindow = new RelationWindow(this);
+
+    // connect signals and slots
+    connect(treeForm, SIGNAL(goToNote(int)), this, SLOT(on_treeitem_doubleclick(int)));
 
     // default values
-    showTree = false;
+    isTreeShown = false;
+    treeForm->hide();
     clearingNoteList = false;
     clearingVersionList = false;
     clearingRelationList = false;
@@ -35,6 +43,10 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    if (addCoupleDiag)
+        delete addCoupleDiag;
+    if (treeForm)
+        delete treeForm;
 }
 
 void MainWindow::resetNoteList(EnumNoteType noteType, EnumNoteStatus noteStatus) {
@@ -65,12 +77,13 @@ void MainWindow::resetNoteList(EnumNoteType noteType, EnumNoteStatus noteStatus)
 }
 
 void MainWindow::resetRelationList() {
+    EnumNoteType type = getCurrentType();
+    if (currRelationInfo.currRelation < 0 && currNoteInfo[type].currId < 0)
+        return;
+
     clearingRelationList = true;
     ui->note_relationCoupleList->clear();
     clearingRelationList = false;
-
-    EnumNoteType type = getCurrentType();
-    Q_ASSERT(currRelationInfo.currRelation >= 0 && currNoteInfo[type].currId >= 0);
 
     // set ComboBox
     clearingRelationComboBox = true;
@@ -83,8 +96,14 @@ void MainWindow::resetRelationList() {
 
     // set couple list
     currRelationInfo.coupleList = RelationManager::getInstance().getRelatedNotes(currRelationInfo.currRelation, currNoteInfo[type].currId);
+    bool isOriented = RelationManager::getInstance().isRelationOriented(currRelationInfo.currRelation);
     for (auto it = currRelationInfo.coupleList.begin(); it != currRelationInfo.coupleList.end(); ++it) {
-        ui->note_relationCoupleList->addItem((*it).label);
+        QString str = (*it).label
+                + " : "
+                + NoteManager::getInstance().getLastestNoteVersion((*it).n1)->getTitle()
+                + (isOriented ? " -> " : " <-> ")
+                + NoteManager::getInstance().getLastestNoteVersion((*it).n2)->getTitle();
+        ui->note_relationCoupleList->addItem(str);
     }
 }
 
@@ -104,6 +123,9 @@ void MainWindow::setToNoteCommun(int id, int ver) {
         clearingRelationList = true;
         ui->note_relationCoupleList->clear();
         clearingRelationList = false;
+        clearingRelationComboBox = true;
+        ui->note_relationSelect->clear();
+        clearingRelationComboBox = false;
         return;
     }
     // set date
@@ -234,7 +256,7 @@ void MainWindow::setToTask(int id, int ver) {
         t = NoteManager::getInstance().getTask(id, ver);
     ui->task_titleEdit->setText(t->getTitle());
     ui->task_actionEdit->setPlainText(t->getAction());
-    ui->task_ddlTimeEdit->setTime(t->getDeadline().time());
+    ui->task_ddlTimeEdit->setDateTime(t->getDeadline());
     ui->task_priorityEdit->setCurrentIndex(t->getPriority());
 }
 
@@ -366,7 +388,7 @@ void MainWindow::setMainWindowState(EnumWindowState newState) {
         setNoteView(e_article);
         showNoteCommon();
         hideTrash();
-        ui->treeWidget->hide();
+        hideTree();
         ui->article_titleEdit->setEnabled(false);
         ui->article_textEdit->setEnabled(false);
         ui->article_editButton->show();
@@ -378,7 +400,7 @@ void MainWindow::setMainWindowState(EnumWindowState newState) {
         setNoteView(e_article);
         showNoteCommon();
         hideTrash();
-        ui->treeWidget->hide();
+        hideTree();
         ui->article_titleEdit->setEnabled(true);
         ui->article_textEdit->setEnabled(true);
         ui->article_editButton->hide();
@@ -390,7 +412,7 @@ void MainWindow::setMainWindowState(EnumWindowState newState) {
         setNoteView(e_task);
         showNoteCommon();
         hideTrash();
-        ui->treeWidget->hide();
+        hideTree();
         ui->task_titleEdit->setEnabled(false);
         ui->task_actionEdit->setEnabled(false);
         ui->task_ddlTimeEdit->setEnabled(false);
@@ -405,7 +427,7 @@ void MainWindow::setMainWindowState(EnumWindowState newState) {
         setNoteView(e_task);
         showNoteCommon();
         hideTrash();
-        ui->treeWidget->hide();
+        hideTree();
         ui->task_titleEdit->setEnabled(true);
         ui->task_actionEdit->setEnabled(true);
         ui->task_ddlTimeEdit->setEnabled(true);
@@ -420,9 +442,10 @@ void MainWindow::setMainWindowState(EnumWindowState newState) {
         setNoteView(e_resource);
         showNoteCommon();
         hideTrash();
-        ui->treeWidget->hide();
+        hideTree();
         ui->resource_titleEdit->setEnabled(false);
         ui->resource_urlSelect->hide();
+        ui->resource_openUrlButton->show();
         ui->resource_despEdit->setEnabled(false);
         ui->resource_editButton->show();
         ui->resource_saveButton->hide();
@@ -433,9 +456,10 @@ void MainWindow::setMainWindowState(EnumWindowState newState) {
         setNoteView(e_resource);
         showNoteCommon();
         hideTrash();
-        ui->treeWidget->hide();
+        hideTree();
         ui->resource_titleEdit->setEnabled(true);
         ui->resource_urlSelect->show();
+        ui->resource_openUrlButton->hide();
         ui->resource_despEdit->setEnabled(true);
         ui->resource_editButton->hide();
         ui->resource_saveButton->show();
@@ -446,21 +470,21 @@ void MainWindow::setMainWindowState(EnumWindowState newState) {
         setNoteView(e_article);
         hideNoteCommon();
         showTrash(e_article);
-        ui->treeWidget->hide();
+        hideTree();
         break;
 
     case e_trash_task:
         setNoteView(e_task);
         hideNoteCommon();
         showTrash(e_task);
-        ui->treeWidget->hide();
+        hideTree();
         break;
 
     case e_trash_resource:
         setNoteView(e_resource);
         hideNoteCommon();
         showTrash(e_resource);
-        ui->treeWidget->hide();
+        hideTree();
         break;
 
     case e_trash_no:
@@ -528,7 +552,7 @@ void MainWindow::on_task_saveButton_clicked()
     t.setDateCreate(QDateTime::fromString(ui->note_dateCreateText->text()));
     t.setDateModif(QDateTime::currentDateTime());
     t.setTitle(ui->task_titleEdit->text());
-    t.setDeadline(QDateTime::fromString(ui->task_ddlTimeEdit->text()));
+    t.setDeadline(ui->task_ddlTimeEdit->dateTime());
     t.setAction(ui->task_actionEdit->toPlainText());
     t.setPriority((EnumPriority)priorityNames.key(ui->task_priorityEdit->currentText()));
     t.setTaskStatus((EnumTaskStatus)taskStatusNames.key(ui->task_statusComboBox->currentText()));
@@ -579,16 +603,33 @@ void MainWindow::on_buttonTrash_clicked()
     resetNoteList(e_all, e_deleted);
 }
 
+void MainWindow::showTree() {
+    if (isTreeShown == true)
+        return;
+    treeForm->resize(treeForm->width(), ui->tree_showHideButton->height());
+    treeForm->move(
+                ui->tree_showHideButton->pos().x() - treeForm->width(),
+                ui->tree_showHideButton->pos().y());
+    treeForm->show();
+    isTreeShown = true;
+    ui->tree_showHideButton->setText(">");
+}
+
+void MainWindow::hideTree() {
+    if (isTreeShown == false)
+        return;
+    treeForm->hide();
+    isTreeShown = false;
+    ui->tree_showHideButton->setText("<");
+}
+
 void MainWindow::on_tree_showHideButton_clicked()
 {
-    if (showTree) {
-        ui->treeWidget->hide();
-        ui->tree_showHideButton->setText("<");
+    if (isTreeShown) {
+        hideTree();
     } else {
-        ui->treeWidget->show();
-        ui->tree_showHideButton->setText(">");
+        showTree();
     }
-    showTree = !showTree;
 }
 
 void MainWindow::on_actionArticle_triggered()
@@ -613,6 +654,7 @@ void MainWindow::on_actionTask_triggered()
     setToNote(-1);
 
     // set dates
+    ui->task_ddlTimeEdit->setDateTime(QDateTime::currentDateTime());
     ui->note_dateCreateText->setText(QDateTime::currentDateTime().toString());
     ui->note_dateModifText->setText(QDateTime::currentDateTime().toString());
 }
@@ -661,6 +703,7 @@ void MainWindow::on_note_listWidget_currentRowChanged(int currentRow)
         setTrashView(currNoteInfo[type].currId);
     }
     setToNote(currNoteInfo[type].currId);
+    treeForm->setNoteTree(currNoteInfo[type].currId);
 }
 
 void MainWindow::on_note_versionList_currentRowChanged(int currentRow)
@@ -693,13 +736,6 @@ void MainWindow::on_note_deleteButton_clicked()
     resetNoteList(type);
 }
 
-void MainWindow::on_note_manageRelationButton_clicked()
-{
-    EnumNoteType type = getCurrentType();
-    if (currNoteInfo[type].currId < 0)
-        return;
-}
-
 void MainWindow::on_trash_deleteButton_clicked()
 {
     EnumNoteType type = getCurrentType();
@@ -730,23 +766,59 @@ void MainWindow::on_note_relationSelect_currentIndexChanged(const QString &arg1)
 void MainWindow::on_note_addCoupleButton_clicked()
 {
     EnumNoteType type = getCurrentType();
-    if (currNoteInfo[type].currId >= 0 && currRelationInfo.currRelation >= 0) {
-        addCoupleDiag->setInfo(currNoteInfo[type].currId, currRelationInfo.currRelation);
-        addCoupleDiag->exec();
-        resetRelationList();
+    if (currNoteInfo[type].currId < 0 || currRelationInfo.currRelation < 0) {
+        QMessageBox::warning(this, "Attention", "Pour créer une couple, il faut aller dans l'interface d'une note.");
     }
+    addCoupleDiag->setInfo(currNoteInfo[type].currId, currRelationInfo.currRelation);
+    addCoupleDiag->exec();
+    resetRelationList();
 }
 
 void MainWindow::on_note_deleteCoupleButton_clicked()
 {
-
+    EnumNoteType type = getCurrentType();
+    if (currRelationInfo.currRelation < 0 || currNoteInfo[type].currId < 0 || currRelationInfo.currCoupleIndex < 0) {
+        QMessageBox::warning(this, "Attention", "Veuillez sélectionner une couple pour supprimer.");
+        return;
+    }
+    RelationManager::getInstance().deleteCouple(currRelationInfo.currRelation, currRelationInfo.currCouple());
+    resetRelationList();
 }
 
 void MainWindow::on_note_relationCoupleList_currentRowChanged(int currentRow)
 {
-    EnumNoteType type = getCurrentType();
-    if (currNoteInfo[type].currId >= 0 && currRelationInfo.currRelation >= 0 && currRelationInfo.currCoupleIndex >= 0) {
-        RelationManager::getInstance().deleteCouple(currRelationInfo.currRelation, currRelationInfo.currCouple());
-        resetRelationList();
+    currRelationInfo.currCoupleIndex = currentRow;
+}
+
+void MainWindow::on_note_manageRelationButton_clicked()
+{
+    relationWindow->exec();
+    resetRelationList();
+}
+
+void MainWindow::on_treeitem_doubleclick(int id)
+{
+    hideTree();
+    EnumNoteType type = NoteManager::getInstance().getNoteType(id);
+    switch (type)
+    {
+    case e_article:
+        setMainWindowState(e_article_view);
+        break;
+
+    case e_resource:
+        setMainWindowState(e_resource_view);
+        break;
+
+    case e_task:
+        setMainWindowState(e_task_view);
+        break;
+
+    default:
+        Q_ASSERT(0);
+        break;
     }
+
+    currNoteInfo[type].currId = id;
+    resetNoteList(type);
 }
