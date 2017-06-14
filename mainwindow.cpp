@@ -6,6 +6,7 @@
 #include "task.h"
 #include "resource.h"
 #include "notemanager.h"
+#include "relationmanager.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,12 +14,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     setMainWindowState(e_default);
+    addCoupleDiag = new AddCoupleDiag(this);
 
     // default values
     showTree = false;
     clearingNoteList = false;
     clearingVersionList = false;
     clearingRelationList = false;
+    clearingRelationComboBox = false;
 
     // set combo box
     for (auto it = taskStatusNames.begin(); it != taskStatusNames.end(); ++it) {
@@ -40,31 +43,54 @@ void MainWindow::resetNoteList(EnumNoteType noteType, EnumNoteStatus noteStatus)
     clearingNoteList = false;
     // set list view
     vector<int> newList = NoteManager::getInstance().getNotes(noteType, noteStatus);
-    currInfo[noteType].id_notelist.clear();
-    currInfo[noteType].id_notelist.reserve(newList.size());
-    currInfo[noteType].id_notelist.assign(newList.begin(), newList.end());
+    currNoteInfo[noteType].id_notelist.clear();
+    currNoteInfo[noteType].id_notelist.reserve(newList.size());
+    currNoteInfo[noteType].id_notelist.assign(newList.begin(), newList.end());
 
-    if (currInfo[noteType].id_notelist.size() == 0) {
-        currInfo[noteType].currId = -1;
+    if (currNoteInfo[noteType].id_notelist.size() == 0) {
+        currNoteInfo[noteType].currId = -1;
     } else {
-        if (currInfo[noteType].currId == -1)
-            currInfo[noteType].currId = currInfo[noteType].id_notelist[0];
-        for (auto it = currInfo[noteType].id_notelist.begin(); it != currInfo[noteType].id_notelist.end(); ++it) {
+        if (currNoteInfo[noteType].currId == -1)
+            currNoteInfo[noteType].currId = currNoteInfo[noteType].id_notelist[0];
+        for (auto it = currNoteInfo[noteType].id_notelist.begin(); it != currNoteInfo[noteType].id_notelist.end(); ++it) {
             ui->note_listWidget->addItem(NoteManager::getInstance().getLastestNoteVersion(*it)->getTitle());
         }
-        ui->note_listWidget->item(currInfo[noteType].currIdx())->setSelected(true);
+        ui->note_listWidget->item(currNoteInfo[noteType].currIdx())->setSelected(true);
     }
 
     // activate current article item
     if (noteType == e_all)
-        setTrashView(currInfo[noteType].currId);
-    setToNote(currInfo[noteType].currId);
+        setTrashView(currNoteInfo[noteType].currId);
+    setToNote(currNoteInfo[noteType].currId);
+}
+
+void MainWindow::resetRelationList() {
+    clearingRelationList = true;
+    ui->note_relationCoupleList->clear();
+    clearingRelationList = false;
+
+    EnumNoteType type = getCurrentType();
+    Q_ASSERT(currRelationInfo.currRelation >= 0 && currNoteInfo[type].currId >= 0);
+
+    // set ComboBox
+    clearingRelationComboBox = true;
+    ui->note_relationSelect->clear();
+    int relationNb = RelationManager::getInstance().getRelationNb();
+    for (int i = 0; i < relationNb; ++i) {
+        ui->note_relationSelect->addItem(RelationManager::getInstance().getRelationTitle(i));
+    }
+    clearingRelationComboBox = false;
+
+    // set couple list
+    currRelationInfo.coupleList = RelationManager::getInstance().getRelatedNotes(currRelationInfo.currRelation, currNoteInfo[type].currId);
+    for (auto it = currRelationInfo.coupleList.begin(); it != currRelationInfo.coupleList.end(); ++it) {
+        ui->note_relationCoupleList->addItem((*it).label);
+    }
 }
 
 void MainWindow::setToNoteCommun(int id, int ver) {
     if (id < 0) {
         ui->note_deleteButton->hide();
-        ui->note_manageRelationButton->hide();
         // clear date
         ui->note_dateCreateText->setText("");
         ui->note_dateModifText->setText("");
@@ -73,8 +99,10 @@ void MainWindow::setToNoteCommun(int id, int ver) {
         ui->note_versionList->clear();
         clearingVersionList = false;
         // clear relations
+        currRelationInfo.currRelation = -1;
+        currRelationInfo.currCoupleIndex = -1;
         clearingRelationList = true;
-        ui->note_relationList->clear();
+        ui->note_relationCoupleList->clear();
         clearingRelationList = false;
         return;
     }
@@ -98,9 +126,9 @@ void MainWindow::setToNoteCommun(int id, int ver) {
     ui->note_resetVersionButton->hide();
 
     // set relations
-    clearingRelationList = true;
-    ui->note_relationList->clear();
-    clearingRelationList = false;
+    currRelationInfo.currRelation = 0;
+    currRelationInfo.currCoupleIndex = -1;
+    resetRelationList();
 }
 
 EnumNoteType MainWindow::getCurrentType() {
@@ -155,7 +183,6 @@ void MainWindow::setToNote(int id, int ver) {
 void MainWindow::showNoteCommon() {
     ui->note_dateWidget->show();
     ui->note_deleteButton->show();
-    ui->note_manageRelationButton->show();
     ui->note_versionWidget->show();
     ui->note_resetVersionButton->hide();
     ui->note_relationWidget->show();
@@ -165,7 +192,6 @@ void MainWindow::showNoteCommon() {
 void MainWindow::hideNoteCommon() {
     ui->note_dateWidget->hide();
     ui->note_deleteButton->hide();
-    ui->note_manageRelationButton->hide();
     ui->note_versionWidget->hide();
     ui->note_relationWidget->hide();
     ui->tree_showHideButton->hide();
@@ -182,7 +208,7 @@ void MainWindow::setToArticle(int id, int ver) {
     Article *a;
     if (ver < 0) {
         a = NoteManager::getInstance().getLastestArticleVersion(id);
-        currInfo[e_article].currVer = -1;
+        currNoteInfo[e_article].currVer = -1;
     } else
         a = NoteManager::getInstance().getArticle(id, ver);
     ui->article_titleEdit->setText(a->getTitle());
@@ -202,7 +228,7 @@ void MainWindow::setToTask(int id, int ver) {
     Task *t;
     if (ver < 0) {
         t = NoteManager::getInstance().getLastestTaskVersion(id);
-        currInfo[e_task].currVer = -1;
+        currNoteInfo[e_task].currVer = -1;
     }
     else
         t = NoteManager::getInstance().getTask(id, ver);
@@ -225,7 +251,7 @@ void MainWindow::setToResource(int id, int ver) {
     Resource *t;
     if (ver < 0) {
          t = NoteManager::getInstance().getLastestResourceVersion(id);
-         currInfo[e_resource].currVer = -1;
+         currNoteInfo[e_resource].currVer = -1;
     }
     else
         t = NoteManager::getInstance().getResource(id, ver);
@@ -238,8 +264,7 @@ void MainWindow::setToResource(int id, int ver) {
 // view modification
 
 void MainWindow::showTrash(EnumNoteType noteType) {
-    ui->trash_deleteButton->show();
-    ui->trash_restoreButton->show();
+    ui->trash_buttonWidget->show();
     switch (noteType) {
     case e_article:
         ui->trash_noNote->hide();
@@ -300,8 +325,7 @@ void MainWindow::setTrashView(int id) {
 }
 
 void MainWindow::hideTrash() {
-    ui->trash_deleteButton->hide();
-    ui->trash_restoreButton->hide();
+    ui->trash_buttonWidget->hide();
     ui->trash_noNote->hide();
 }
 
@@ -444,8 +468,7 @@ void MainWindow::setMainWindowState(EnumWindowState newState) {
         ui->article_allWidget->hide();
         ui->task_allWidget->hide();
         hideNoteCommon();
-        ui->trash_deleteButton->hide();
-        ui->trash_restoreButton->hide();
+        ui->trash_buttonWidget->hide();
         ui->trash_noNote->show();
         break;
 
@@ -474,12 +497,12 @@ void MainWindow::on_task_editButton_clicked()
 void MainWindow::on_article_saveButton_clicked()
 {
     Article a;
-    a.setId(currInfo[e_article].currId);
+    a.setId(currNoteInfo[e_article].currId);
     a.setDateCreate(QDateTime::fromString(ui->note_dateCreateText->text()));
     a.setDateModif(QDateTime::currentDateTime());
     a.setTitle(ui->article_titleEdit->text());
     a.setText(ui->article_textEdit->toPlainText());
-    currInfo[e_article].currId = NoteManager::getInstance().addArticle(a);
+    currNoteInfo[e_article].currId = NoteManager::getInstance().addArticle(a);
     setMainWindowState(e_article_view);
     resetNoteList(e_article);
 }
@@ -487,13 +510,13 @@ void MainWindow::on_article_saveButton_clicked()
 void MainWindow::on_resource_saveButton_clicked()
 {
     Resource r((ResourceType)resourceTypeNames.key(ui->resource_typeText->text()));
-    r.setId(currInfo[e_resource].currId);
+    r.setId(currNoteInfo[e_resource].currId);
     r.setDateCreate(QDateTime::fromString(ui->note_dateCreateText->text()));
     r.setDateModif(QDateTime::currentDateTime());
     r.setTitle(ui->resource_titleEdit->text());
     r.setUrl(ui->resource_url->text());
     r.setDescp(ui->resource_despEdit->toPlainText());
-    currInfo[e_resource].currId = NoteManager::getInstance().addResource(r);
+    currNoteInfo[e_resource].currId = NoteManager::getInstance().addResource(r);
     setMainWindowState(e_resource_view);
     resetNoteList(e_resource);
 }
@@ -501,7 +524,7 @@ void MainWindow::on_resource_saveButton_clicked()
 void MainWindow::on_task_saveButton_clicked()
 {
     Task t;
-    t.setId(currInfo[e_task].currId);
+    t.setId(currNoteInfo[e_task].currId);
     t.setDateCreate(QDateTime::fromString(ui->note_dateCreateText->text()));
     t.setDateModif(QDateTime::currentDateTime());
     t.setTitle(ui->task_titleEdit->text());
@@ -509,7 +532,7 @@ void MainWindow::on_task_saveButton_clicked()
     t.setAction(ui->task_actionEdit->toPlainText());
     t.setPriority((EnumPriority)priorityNames.key(ui->task_priorityEdit->currentText()));
     t.setTaskStatus((EnumTaskStatus)taskStatusNames.key(ui->task_statusComboBox->currentText()));
-    currInfo[e_task].currId = NoteManager::getInstance().addTask(t);
+    currNoteInfo[e_task].currId = NoteManager::getInstance().addTask(t);
     setMainWindowState(e_task_view);
     resetNoteList(e_task);
 }
@@ -573,7 +596,7 @@ void MainWindow::on_actionArticle_triggered()
     resetNoteList(e_article);
     setMainWindowState(e_article_edit);
     // empty all fields
-    currInfo[e_article].currId = -1;
+    currNoteInfo[e_article].currId = -1;
     setToNote(-1);
 
     // set dates
@@ -586,7 +609,7 @@ void MainWindow::on_actionTask_triggered()
     resetNoteList(e_task);
     setMainWindowState(e_task_edit);
     // empty all fields
-    currInfo[e_task].currId = -1;
+    currNoteInfo[e_task].currId = -1;
     setToNote(-1);
 
     // set dates
@@ -598,7 +621,7 @@ void MainWindow::onCreateResource(ResourceType type) {
     resetNoteList(e_resource);
     setMainWindowState(e_resource_edit);
     // empty all fields
-    currInfo[e_resource].currId = -1;
+    currNoteInfo[e_resource].currId = -1;
     setToNote(-1);
 
     // set type
@@ -633,11 +656,11 @@ void MainWindow::on_note_listWidget_currentRowChanged(int currentRow)
     if (clearingNoteList)
         return;
     EnumNoteType type = getCurrentType();
-    currInfo[type].currId = currInfo[type].id_notelist[currentRow];
+    currNoteInfo[type].currId = currNoteInfo[type].id_notelist[currentRow];
     if (type == e_all) {
-        setTrashView(currInfo[type].currId);
+        setTrashView(currNoteInfo[type].currId);
     }
-    setToNote(currInfo[type].currId);
+    setToNote(currNoteInfo[type].currId);
 }
 
 void MainWindow::on_note_versionList_currentRowChanged(int currentRow)
@@ -645,34 +668,35 @@ void MainWindow::on_note_versionList_currentRowChanged(int currentRow)
     if (clearingVersionList)
         return;
     EnumNoteType type = getCurrentType();
-    Q_ASSERT(currInfo[type].currId >= 0);
-    currInfo[type].currVer = currentRow;
-    setToNote(currInfo[type].currId, currInfo[type].currVer);
+    Q_ASSERT(currNoteInfo[type].currId >= 0);
+    currNoteInfo[type].currVer = currentRow;
+    setToNote(currNoteInfo[type].currId, currNoteInfo[type].currVer);
     ui->note_resetVersionButton->show();
 }
 
 void MainWindow::on_note_resetVersionButton_clicked()
 {
     EnumNoteType type = getCurrentType();
-    Q_ASSERT(currInfo[type].currId >= 0 && currInfo[type].currVer >= 0);
-    NoteManager::getInstance().resetToVersion(currInfo[type].currId, currInfo[type].currVer);
+    Q_ASSERT(currNoteInfo[type].currId >= 0 && currNoteInfo[type].currVer >= 0);
+    NoteManager::getInstance().resetToVersion(currNoteInfo[type].currId, currNoteInfo[type].currVer);
     resetNoteList(type);
 }
 
 void MainWindow::on_note_deleteButton_clicked()
 {
     EnumNoteType type = getCurrentType();
-    if (currInfo[type].currId < 0)
+    if (currNoteInfo[type].currId < 0)
         return;
-    NoteManager::getInstance().deleteNote(currInfo[type].currId);
-    currInfo[type].currId = -1;
+    NoteManager::getInstance().deleteNote(currNoteInfo[type].currId);
+    currNoteInfo[type].currId = -1;
+    currNoteInfo[type].currVer = -1;
     resetNoteList(type);
 }
 
 void MainWindow::on_note_manageRelationButton_clicked()
 {
     EnumNoteType type = getCurrentType();
-    if (currInfo[type].currId < 0)
+    if (currNoteInfo[type].currId < 0)
         return;
 }
 
@@ -680,8 +704,9 @@ void MainWindow::on_trash_deleteButton_clicked()
 {
     EnumNoteType type = getCurrentType();
     Q_ASSERT(type == e_all);
-    Q_ASSERT(currInfo[type].currId >= 0);
-    NoteManager::getInstance().dropNote(currInfo[type].currId);
+    Q_ASSERT(currNoteInfo[type].currId >= 0);
+    NoteManager::getInstance().dropNote(currNoteInfo[type].currId);
+    currNoteInfo[type].currId = -1;
     resetNoteList(e_all, e_deleted);
 }
 
@@ -689,7 +714,39 @@ void MainWindow::on_trash_restoreButton_clicked()
 {
     EnumNoteType type = getCurrentType();
     Q_ASSERT(type == e_all);
-    Q_ASSERT(currInfo[type].currId >= 0);
-    NoteManager::getInstance().restoreNote(currInfo[type].currId);
+    Q_ASSERT(currNoteInfo[type].currId >= 0);
+    NoteManager::getInstance().restoreNote(currNoteInfo[type].currId);
     resetNoteList(e_all, e_deleted);
+}
+
+void MainWindow::on_note_relationSelect_currentIndexChanged(const QString &arg1)
+{
+    if (clearingRelationComboBox)
+        return;
+    currRelationInfo.currRelation = RelationManager::getInstance().getIdxFromTitle(arg1);
+    resetRelationList();
+}
+
+void MainWindow::on_note_addCoupleButton_clicked()
+{
+    EnumNoteType type = getCurrentType();
+    if (currNoteInfo[type].currId >= 0 && currRelationInfo.currRelation >= 0) {
+        addCoupleDiag->setInfo(currNoteInfo[type].currId, currRelationInfo.currRelation);
+        addCoupleDiag->exec();
+        resetRelationList();
+    }
+}
+
+void MainWindow::on_note_deleteCoupleButton_clicked()
+{
+
+}
+
+void MainWindow::on_note_relationCoupleList_currentRowChanged(int currentRow)
+{
+    EnumNoteType type = getCurrentType();
+    if (currNoteInfo[type].currId >= 0 && currRelationInfo.currRelation >= 0 && currRelationInfo.currCoupleIndex >= 0) {
+        RelationManager::getInstance().deleteCouple(currRelationInfo.currRelation, currRelationInfo.currCouple());
+        resetRelationList();
+    }
 }

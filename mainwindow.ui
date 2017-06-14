@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1058</width>
-    <height>709</height>
+    <width>1095</width>
+    <height>715</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,7 +31,7 @@
      <rect>
       <x>0</x>
       <y>10</y>
-      <width>1061</width>
+      <width>1101</width>
       <height>661</height>
      </rect>
     </property>
@@ -228,7 +228,7 @@
           <enum>QLayout::SetFixedSize</enum>
          </property>
          <item>
-          <widget class="QComboBox" name="note_filter">
+          <widget class="QComboBox" name="task_filter">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -329,7 +329,7 @@ color: #000000;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>329</width>
+               <width>349</width>
                <height>96</height>
               </rect>
              </property>
@@ -470,7 +470,7 @@ color: #000000;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>329</width>
+               <width>349</width>
                <height>96</height>
               </rect>
              </property>
@@ -615,7 +615,7 @@ color: #000000;
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>329</width>
+               <width>349</width>
                <height>96</height>
               </rect>
              </property>
@@ -679,44 +679,44 @@ color: #000000;
      <item>
       <layout class="QVBoxLayout" name="note_infoLayout">
        <item>
+        <widget class="QWidget" name="note_dateWidget" native="true">
+         <layout class="QFormLayout" name="formLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="note_dateCreateLabel">
+            <property name="text">
+             <string>Création</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="note_dateCreateText">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="note_dateModifLabel">
+            <property name="text">
+             <string>Modification</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="note_dateModifText">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
           <widget class="QWidget" name="note_versionWidget" native="true">
            <layout class="QVBoxLayout" name="oldVersionsLayout">
-            <item>
-             <widget class="QWidget" name="note_dateWidget" native="true">
-              <layout class="QFormLayout" name="formLayout_2">
-               <item row="0" column="0">
-                <widget class="QLabel" name="note_dateCreateLabel">
-                 <property name="text">
-                  <string>Création</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="note_dateModifLabel">
-                 <property name="text">
-                  <string>Modification</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QLabel" name="note_dateCreateText">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QLabel" name="note_dateModifText">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
             <item>
              <widget class="QLabel" name="label_oldVersions">
               <property name="text">
@@ -754,85 +754,132 @@ color: #000000;
            </layout>
           </widget>
          </item>
-         <item>
-          <widget class="QWidget" name="note_relationWidget" native="true">
-           <layout class="QVBoxLayout" name="relatedNotesLayout">
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="note_relationWidget" native="true">
+         <layout class="QFormLayout" name="formLayout_4">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Relation : </string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="note_relationSelect"/>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QListWidget" name="note_relationCoupleList"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QPushButton" name="note_manageRelationButton">
+            <property name="text">
+             <string>Gestion de relation</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
             <item>
-             <widget class="QLabel" name="label_3">
+             <widget class="QPushButton" name="note_addCoupleButton">
+              <property name="minimumSize">
+               <size>
+                <width>27</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>27</width>
+                <height>27</height>
+               </size>
+              </property>
               <property name="text">
-               <string>Notes annexées </string>
+               <string>+</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QListWidget" name="note_relationList"/>
+             <widget class="QPushButton" name="note_deleteCoupleButton">
+              <property name="minimumSize">
+               <size>
+                <width>27</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>27</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>-</string>
+              </property>
+             </widget>
             </item>
            </layout>
-          </widget>
-         </item>
-        </layout>
+          </item>
+         </layout>
+        </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>70</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
-           <item>
-            <widget class="QPushButton" name="trash_restoreButton">
-             <property name="text">
-              <string>Restaurer</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="trash_deleteButton">
-             <property name="text">
-              <string>Supprimer défini</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="note_deleteButton">
-             <property name="text">
-              <string>Supprimer note</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="note_manageRelationButton">
-             <property name="text">
-              <string>Gérer annexes</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>70</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+        <widget class="QPushButton" name="note_deleteButton">
+         <property name="text">
+          <string>Supprimer note</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="trash_buttonWidget" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>70</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QPushButton" name="trash_restoreButton">
+              <property name="text">
+               <string>Restaurer</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="trash_deleteButton">
+              <property name="text">
+               <string>Supprimer défini</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>70</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </item>
@@ -863,7 +910,7 @@ color: #000000;
    <widget class="QWidget" name="treeWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>660</x>
       <y>20</y>
       <width>411</width>
       <height>641</height>
@@ -930,17 +977,17 @@ color: #000000;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1058</width>
+     <width>1095</width>
      <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>Fichier</string>
     </property>
     <widget class="QMenu" name="menuNew">
      <property name="title">
-      <string>New</string>
+      <string>Nouveau</string>
      </property>
      <widget class="QMenu" name="menuRessources">
       <property name="title">
@@ -963,18 +1010,26 @@ color: #000000;
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Help</string>
+     <string>Aider</string>
     </property>
     <addaction name="actionHelp"/>
     <addaction name="separator"/>
     <addaction name="actionAbout_NoteIt"/>
    </widget>
+   <widget class="QMenu" name="menuEditer">
+    <property name="title">
+     <string>Editer</string>
+    </property>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuEditer"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionSave">
    <property name="text">
-    <string>Save</string>
+    <string>Enregistrer</string>
    </property>
   </action>
   <action name="actionHelp">
@@ -994,7 +1049,7 @@ color: #000000;
   </action>
   <action name="actionSave_as">
    <property name="text">
-    <string>Save as...</string>
+    <string>Enregistrer sous...</string>
    </property>
   </action>
   <action name="actionAbout_NoteIt">
@@ -1004,7 +1059,7 @@ color: #000000;
   </action>
   <action name="actionOpen">
    <property name="text">
-    <string>Open...</string>
+    <string>Ouvrir...</string>
    </property>
   </action>
   <action name="actionAudio">
@@ -1025,6 +1080,22 @@ color: #000000;
   <action name="actionQuitter">
    <property name="text">
     <string>Quitter</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="text">
+    <string>Annuler</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="text">
+    <string>Rétablir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y, Ctrl+Shift+Z</string>
    </property>
   </action>
  </widget>

@@ -8,18 +8,34 @@
 #include "task.h"
 #include "resource.h"
 
-NoteManager* NoteManager::instance = nullptr;
+NoteManager::Handler NoteManager::handler = NoteManager::Handler();
 
 NoteManager &NoteManager::getInstance(){
-    if (!instance)
-        instance =new NoteManager();
-    return *instance;
+    if (!handler.instance)
+        handler.instance =new NoteManager();
+    return *handler.instance;
 }
 
-void NoteManager::freeInstance() {
-    if (instance) {
-        delete instance;
-        instance = nullptr;
+NoteManager::~NoteManager() {
+    for (auto it = articles.begin(); it != articles.end(); ++it) {
+        for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
+            delete (*it2);
+            *it2 = nullptr;
+        }
+    }
+
+    for (auto it = tasks.begin(); it != tasks.end(); ++it) {
+        for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
+            delete (*it2);
+            *it2 = nullptr;
+        }
+    }
+
+    for (auto it = resources.begin(); it != resources.end(); ++it) {
+        for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
+            delete (*it2);
+            *it2 = nullptr;
+        }
     }
 }
 

@@ -16,10 +16,9 @@ SOURCES += \
     task.cpp \
     notemanager.cpp \
     relationmanager.cpp \
-    relationtree.cpp \
-    relationnode.cpp \
     relation.cpp \
-    resource.cpp
+    resource.cpp \
+    addcouplediag.cpp
 
 DISTFILES +=
 
@@ -31,13 +30,13 @@ HEADERS += \
     notemanager.h \
     resource.h \
     relationmanager.h \
-    relationtree.h \
-    relationnode.h \
     relation.h \
-    enums.h
+    enums.h \
+    addcouplediag.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    addcouplediag.ui
 
 RESOURCES += \
     resource.qrc

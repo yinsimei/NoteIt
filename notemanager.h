@@ -22,16 +22,22 @@ public:
 class NoteManager
 {
 private:
-    static NoteManager* instance;
+    struct Handler {
+        NoteManager* instance;
+        Handler(): instance(nullptr) {}
+        ~Handler() { if (instance) delete instance; }
+    };
+
+    static Handler handler;
     unordered_map<int, vector<Article *>> articles;
     unordered_map<int, vector<Task *>> tasks;
     unordered_map<int, vector<Resource *>> resources;
     int cur_id;
     NoteManager() : cur_id(0) {}
+    ~NoteManager();
 
 public:
     static NoteManager &getInstance();
-    static void freeInstance();
 
     // Articles
     Article *getArticle(int id, int version);

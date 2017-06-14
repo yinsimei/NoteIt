@@ -6,6 +6,8 @@
 #include <QListWidgetItem>
 #include <vector>
 #include "enums.h"
+#include "relation.h"
+#include "addcouplediag.h"
 
 using namespace std;
 
@@ -75,8 +77,17 @@ private slots:
 
     void on_note_versionList_currentRowChanged(int currentRow);
 
+    void on_note_relationSelect_currentIndexChanged(const QString &arg1);
+
+    void on_note_addCoupleButton_clicked();
+
+    void on_note_deleteCoupleButton_clicked();
+
+    void on_note_relationCoupleList_currentRowChanged(int currentRow);
+
 private:
     Ui::MainWindow *ui;
+    AddCoupleDiag *addCoupleDiag;
 
     enum EnumWindowState {
         e_default,
@@ -96,6 +107,7 @@ private:
         int currId;
         int currVer;
         vector<int> id_notelist;
+
         int currIdx() {
             for (unsigned int i = 0; i < id_notelist.size(); ++i) {
                 if (id_notelist[i] == currId)
@@ -106,15 +118,26 @@ private:
         CurrentNoteListInfo() : currId(-1), currVer(-1) {}
     };
 
+    struct CurrentRelationListInfo{
+        int currRelation;
+        vector<Couple> coupleList;
+        int currCoupleIndex;
+
+        Couple currCouple() { return coupleList[currCoupleIndex]; }
+    };
+
     EnumWindowState currState;
     bool showTree;
-    CurrentNoteListInfo currInfo[e_all + 1];
+    CurrentNoteListInfo currNoteInfo[e_all + 1];
+    CurrentRelationListInfo currRelationInfo;
     bool clearingNoteList;
     bool clearingVersionList;
     bool clearingRelationList;
+    bool clearingRelationComboBox;
 
     EnumNoteType getCurrentType();
     void resetNoteList(EnumNoteType noteType, EnumNoteStatus noteStatus = e_active);
+    void resetRelationList();
     void setToNoteCommun(int id, int ver = -1);
     void setToNote(int id, int ver = -1);
     void setToArticle(int id, int ver = -1);
