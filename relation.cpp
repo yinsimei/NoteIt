@@ -1,6 +1,6 @@
 #include "relation.h"
 
-vector<Couple> Relation::getChildren(int n) {
+vector<Couple> Relation::getChildren(int n) const {
     vector<Couple> res;
     for (auto it = couples.begin(); it != couples.end(); ++it) {
         if (it->n1 == n || (!oriented && it->n2 == n))
@@ -9,7 +9,7 @@ vector<Couple> Relation::getChildren(int n) {
     return res;
 }
 
-vector<Couple> Relation::getParents(int n) {
+vector<Couple> Relation::getParents(int n) const {
     vector<Couple> res;
     for (auto it = couples.begin(); it != couples.end(); ++it) {
         if (it->n2== n || (!oriented && it->n1 == n))
@@ -18,7 +18,7 @@ vector<Couple> Relation::getParents(int n) {
     return res;
 }
 
-vector<Couple> Relation::getRelatedNotes(int n) {
+vector<Couple> Relation::getRelatedNotes(int n) const {
     vector<Couple> res;
     for (auto it = couples.begin(); it != couples.end(); ++it) {
         if (it->n1== n || it->n2== n) {
@@ -72,7 +72,7 @@ bool Relation::deleteAllCouplesOf(int id) {
     return res;
 }
 
-bool Relation::checkExist(int id1, int id2) {
+bool Relation::checkExist(int id1, int id2) const {
     for (auto it = couples.begin(); it != couples.end(); ++it) {
         if (it->n1== id1 && it->n2== id2)
             return true;

@@ -90,13 +90,13 @@ void MainWindow::resetRelationList() {
     ui->note_relationSelect->clear();
     int relationNb = RelationManager::getInstance().getRelationNb();
     for (int i = 0; i < relationNb; ++i) {
-        ui->note_relationSelect->addItem(RelationManager::getInstance().getRelationTitle(i));
+        ui->note_relationSelect->addItem(RelationManager::getInstance().getRelation(i).getTitle());
     }
     clearingRelationComboBox = false;
 
     // set couple list
     currRelationInfo.coupleList = RelationManager::getInstance().getRelatedNotes(currRelationInfo.currRelation, currNoteInfo[type].currId);
-    bool isOriented = RelationManager::getInstance().isRelationOriented(currRelationInfo.currRelation);
+    bool isOriented = RelationManager::getInstance().getRelation(currRelationInfo.currRelation).isOriented();
     for (auto it = currRelationInfo.coupleList.begin(); it != currRelationInfo.coupleList.end(); ++it) {
         QString str = (*it).label
                 + " : "

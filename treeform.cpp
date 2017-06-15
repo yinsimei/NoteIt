@@ -28,7 +28,7 @@ void TreeForm::setNoteTree(int id) {
     // set list widget
     int nbRelation = RelationManager::getInstance().getRelationNb();
     for (int i = 0; i < nbRelation; ++i) {
-        QString relationName = RelationManager::getInstance().getRelationTitle(i);
+        QString relationName = RelationManager::getInstance().getRelation(i).getTitle();
         vector<Couple> parentCouples = RelationManager::getInstance().getParentNotes(i, id);
         vector<Couple> childCouples = RelationManager::getInstance().getChildrenNotes(i, id);
         for (auto it = parentCouples.begin(); it != parentCouples.end(); ++it) {

@@ -56,7 +56,7 @@ void AddCoupleDiag::setInfo(int id, int rIdx) {
     clearingList = true;
     ui->relation_noteList->clear();
     clearingList = false;
-    QString relationName = RelationManager::getInstance().getRelationTitle(relationIdx);
+    QString relationName = RelationManager::getInstance().getRelation(relationIdx).getTitle();
     ui->relation_nameLabel->setText(relationName);
     ui->relation_coupleNameEdit->setText("");
 

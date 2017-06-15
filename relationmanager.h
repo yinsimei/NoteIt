@@ -25,23 +25,26 @@ private:
     vector<Relation *> relations;
     RelationManager();
     ~RelationManager();
+    void addRelation(QString relationTitle, QString relationDescp, bool oriented, bool reference = false);
+
 public:
     static RelationManager &getInstance();
 
-    int getRelationNb() { return relations.size(); }
-    const QString &getRelationTitle(int relationIdx) { Q_ASSERT(relationIdx >= 0 && relationIdx < (int)getRelationNb()); return relations[relationIdx]->getTitle(); }
-    bool isRelationOriented(int relationIdx) { Q_ASSERT(relationIdx >= 0 && relationIdx < (int)getRelationNb()); return relations[relationIdx]->isOriented(); }
-    int getIdxFromTitle(QString title);
-    vector<Couple> getParentNotes(int relationIdx, int id);
-    vector<Couple> getChildrenNotes(int relationIdx, int id);
-    vector<Couple> getRelatedNotes(int relationIdx, int id);
+    int getRelationNb() const { return relations.size(); }
+    const Relation &getRelation(int relationIdx) const { Q_ASSERT(relationIdx >= 0 && relationIdx < getRelationNb()); return *relations[relationIdx]; }
+    int getIdxFromTitle(QString title) const;
+    vector<Couple> getParentNotes(int relationIdx, int id) const;
+    vector<Couple> getChildrenNotes(int relationIdx, int id) const;
+    vector<Couple> getRelatedNotes(int relationIdx, int id) const;
+    vector<Couple> getCouples(int relationIdx) const;
+
+    void addRelation(int relationIdx, const Relation & r);
     bool addCouple(int relationIdx, int id1, int id2, QString label);
     void deleteCouple(int relationIdx,int id1, int id2);
     void deleteCouple(int relationIdx, Couple c);
     bool deleteAllCouplesOf(int id);
-    void addRelation(QString relationTitle, QString relationDescp, bool oriented);
     void deleteRelation(int relationIdx);
-    bool checkExist(int relationIdx, int id1, int id2);
+    bool checkExist(int relationIdx, int id1, int id2) const;
 };
 
 #endif // RELATIONMANAGER_H
