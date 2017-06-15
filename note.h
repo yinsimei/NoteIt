@@ -30,6 +30,7 @@ public:
     void setDateCreate(const QDateTime &dc) {dateCreate = dc;}
     void setDateModif(const QDateTime &dm) {dateModif = dm;}
     void setNoteStatus(EnumNoteStatus ns) {noteStatus = ns;}
+    void setArchived(bool a) { archived = a; }
 };
 
 

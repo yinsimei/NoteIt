@@ -16,7 +16,8 @@ SOURCES += \
     relation.cpp \
     addcouplediag.cpp \
     treeform.cpp \
-    relationwindow.cpp
+    relationwindow.cpp \
+    loadsavemanager.cpp
 
 DISTFILES +=
 
@@ -32,7 +33,8 @@ HEADERS += \
     enums.h \
     addcouplediag.h \
     treeform.h \
-    relationwindow.h
+    relationwindow.h \
+    loadsavemanager.h
 
 FORMS += \
     mainwindow.ui \

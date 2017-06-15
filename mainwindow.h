@@ -60,6 +60,12 @@ private slots:
     void on_note_relationCoupleList_currentRowChanged(int currentRow);
     void on_treeitem_doubleclick(int id);
 
+    void on_actionSave_triggered();
+
+    void on_actionSave_as_triggered();
+
+    void on_actionOpen_triggered();
+
 private:
     Ui::MainWindow *ui;
     AddCoupleDiag *addCoupleDiag;
@@ -132,6 +138,9 @@ private:
     void hideTree();
     void setNoteView(EnumNoteType noteType);
     void setTrashView(int id);
+
+    // save & load
+    void saveAs();
 };
 
 #endif // MAINWINDOW_H

@@ -1,3 +1,4 @@
+#include <QFileDialog>
 #include <QtGlobal>
 #include <QMessageBox>
 #include "mainwindow.h"
@@ -8,6 +9,7 @@
 #include "resource.h"
 #include "notemanager.h"
 #include "relationmanager.h"
+#include "loadsavemanager.h"
 #include "treeform.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -821,4 +823,34 @@ void MainWindow::on_treeitem_doubleclick(int id)
 
     currNoteInfo[type].currId = id;
     resetNoteList(type);
+}
+
+void MainWindow::on_actionSave_triggered()
+{
+    if (LoadSaveManager::getInstance().getFilename() == "") {
+        saveAs();
+        return;
+    }
+    LoadSaveManager::getInstance().save();
+}
+
+void MainWindow::on_actionSave_as_triggered()
+{
+    saveAs();
+}
+
+void MainWindow::saveAs() {
+    QString file = QFileDialog::getSaveFileName(this, tr("Enregistrer"), QString(), tr("XML Files (*.xml)"));
+    if (file.right(4).toLower() != ".xml") {
+        file.append(".xml");
+    }
+    LoadSaveManager::getInstance().setFilename(file);
+    LoadSaveManager::getInstance().save();
+}
+
+void MainWindow::on_actionOpen_triggered()
+{
+    QString file = QFileDialog::getOpenFileName(this, tr("Ouvrir"), QString(), tr("XML Files (*.xml)"));
+    LoadSaveManager::getInstance().setFilename(file);
+    LoadSaveManager::getInstance().load();
 }

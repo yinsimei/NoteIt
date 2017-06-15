@@ -7,15 +7,17 @@ using namespace std;
 
 class Resource :  public Note {
 private:
+    friend class LoadSaveManager;
     QString descp;
     QString url;
     ResourceType type;
 protected:
     void setType(ResourceType t) { type = t; }
 public:
+    Resource()
+        : Note(), descp(""), url(""), type(e_image) {}
     Resource(ResourceType typ)
         : Note(), descp(""), url(""), type(typ) {}
-
     Resource(const Resource & r) : Note() {
         setDateCreate(r.getDateCreate());
         setTitle(r.getTitle());

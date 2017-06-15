@@ -14,9 +14,7 @@ RelationManager::RelationManager() {
 }
 
 RelationManager::~RelationManager() {
-    for (auto it = relations.begin(); it != relations.end(); ++it) {
-        delete (*it);
-    }
+    clear();
 }
 
 int RelationManager::getIdxFromTitle(QString title) const {
@@ -70,9 +68,17 @@ bool RelationManager::deleteAllCouplesOf(int id) {
     return res;
 }
 
+void RelationManager::clear() {
+    for (auto it = relations.begin(); it != relations.end(); ++it) {
+        delete (*it);
+    }
+    relations.clear();
+}
+
 void RelationManager::addRelation(int relationIdx, const Relation & r) {
     if (relationIdx < 0) {
-        addRelation(r.getTitle(), r.getDescp(), r.isOriented());
+        Relation *newRelation = new Relation(r);
+        relations.push_back(newRelation);
         return;
     }
     relations[relationIdx]->setTitle(r.getTitle());

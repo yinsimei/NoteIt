@@ -17,26 +17,36 @@ NoteManager &NoteManager::getInstance(){
 }
 
 NoteManager::~NoteManager() {
+    clear();
+}
+
+void NoteManager::clear() {
     for (auto it = articles.begin(); it != articles.end(); ++it) {
         for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
             delete (*it2);
             *it2 = nullptr;
         }
+        it->second.clear();
     }
+    articles.clear();
 
     for (auto it = tasks.begin(); it != tasks.end(); ++it) {
         for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
             delete (*it2);
             *it2 = nullptr;
         }
+        it->second.clear();
     }
+    tasks.clear();
 
     for (auto it = resources.begin(); it != resources.end(); ++it) {
         for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2) {
             delete (*it2);
             *it2 = nullptr;
         }
+        it->second.clear();
     }
+    tasks.clear();
 }
 
 Article *NoteManager::getArticle(int id, int version) {

@@ -1,5 +1,14 @@
 #include "relation.h"
 
+
+Relation::Relation(const Relation &r) {
+    title = r.getTitle();
+    descp = r.getDescp();
+    oriented = r.isOriented();
+    reference = r.isReference();
+    couples = r.couples;
+}
+
 vector<Couple> Relation::getChildren(int n) const {
     vector<Couple> res;
     for (auto it = couples.begin(); it != couples.end(); ++it) {

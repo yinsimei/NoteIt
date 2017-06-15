@@ -21,7 +21,8 @@ public:
 
 class NoteManager
 {
-private:
+protected:
+    friend class LoadSaveManager;
     struct Handler {
         NoteManager* instance;
         Handler(): instance(nullptr) {}
@@ -38,6 +39,7 @@ private:
 
 public:
     static NoteManager &getInstance();
+    void clear();
 
     // Articles
     Article *getArticle(int id, int version);

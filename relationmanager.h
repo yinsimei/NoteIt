@@ -14,7 +14,8 @@ using namespace std;
 
 class RelationManager
 {
-private:
+protected:
+    friend class LoadSaveManager;
     struct Handler {
         RelationManager* instance;
         Handler(): instance(nullptr) {}
@@ -38,6 +39,7 @@ public:
     vector<Couple> getRelatedNotes(int relationIdx, int id) const;
     vector<Couple> getCouples(int relationIdx) const;
 
+    void clear();
     void addRelation(int relationIdx, const Relation & r);
     bool addCouple(int relationIdx, int id1, int id2, QString label);
     void deleteCouple(int relationIdx,int id1, int id2);
