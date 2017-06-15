@@ -598,12 +598,16 @@ void MainWindow::on_task_cancelButton_clicked()
 
 void MainWindow::on_buttonArticle_clicked()
 {
+    if (checkIsEditing())
+        return;
     setMainWindowState(e_article_view);
     resetNoteList(e_article);
 }
 
 void MainWindow::on_buttonTask_clicked()
 {
+    if (checkIsEditing())
+        return;
     setMainWindowState(e_task_view);
     resetNoteList(e_task);
 }
@@ -611,12 +615,16 @@ void MainWindow::on_buttonTask_clicked()
 
 void MainWindow::on_buttonResource_clicked()
 {
+    if (checkIsEditing())
+        return;
     setMainWindowState(e_resource_view);
     resetNoteList(e_resource);
 }
 
 void MainWindow::on_buttonTrash_clicked()
 {
+    if (checkIsEditing())
+        return;
     resetNoteList(e_all);
 }
 
@@ -651,6 +659,8 @@ void MainWindow::on_tree_showHideButton_clicked()
 
 void MainWindow::on_actionArticle_triggered()
 {
+    if (checkIsEditing())
+        return;
     setMainWindowState(e_article_edit);
     resetNoteList(e_article);
     // empty all fields
@@ -664,6 +674,8 @@ void MainWindow::on_actionArticle_triggered()
 
 void MainWindow::on_actionTask_triggered()
 {
+    if (checkIsEditing())
+        return;
     setMainWindowState(e_task_edit);
     resetNoteList(e_task);
     // empty all fields
@@ -692,26 +704,36 @@ void MainWindow::onCreateResource(ResourceType type) {
 
 void MainWindow::on_actionAudio_triggered()
 {
+    if (checkIsEditing())
+        return;
     onCreateResource(e_audio);
 }
 
 void MainWindow::on_actionVideo_triggered()
 {
+    if (checkIsEditing())
+        return;
     onCreateResource(e_video);
 }
 
 void MainWindow::on_actionImage_triggered()
 {
+    if (checkIsEditing())
+        return;
     onCreateResource(e_image);
 }
 
 void MainWindow::on_actionQuitter_triggered()
 {
+    if (checkIsEditing())
+        return;
     close();
 }
 
 void MainWindow::on_note_listWidget_currentRowChanged(int currentRow)
 {
+    if (checkIsEditing())
+        return;
     if (clearingNoteList)
         return;
     EnumNoteType type = getCurrentType();
@@ -725,6 +747,8 @@ void MainWindow::on_note_listWidget_currentRowChanged(int currentRow)
 
 void MainWindow::on_note_versionList_currentRowChanged(int currentRow)
 {
+    if (checkIsEditing())
+        return;
     if (clearingVersionList)
         return;
     EnumNoteType type = getCurrentType();
@@ -736,6 +760,8 @@ void MainWindow::on_note_versionList_currentRowChanged(int currentRow)
 
 void MainWindow::on_note_resetVersionButton_clicked()
 {
+    if (checkIsEditing())
+        return;
     EnumNoteType type = getCurrentType();
     Q_ASSERT(currNoteInfo[type].currId >= 0 && currNoteInfo[type].currVer >= 0);
     NoteManager::getInstance().resetToVersion(currNoteInfo[type].currId, currNoteInfo[type].currVer);
@@ -834,6 +860,8 @@ void MainWindow::on_note_manageRelationButton_clicked()
 
 void MainWindow::on_treeitem_doubleclick(int id)
 {
+    if (checkIsEditing())
+        return;
     hideTree();
     EnumNoteType type = NoteManager::getInstance().getNoteType(id);
     switch (type)
@@ -880,6 +908,14 @@ void MainWindow::saveAs() {
     }
     LoadSaveManager::getInstance().setFilename(file);
     LoadSaveManager::getInstance().save();
+}
+
+bool MainWindow::checkIsEditing() {
+    if (currState == e_article_edit || currState == e_task_edit || currState == e_resource_edit) {
+        QMessageBox::warning(this, "Attention", "Vous êtes en train de éditer une note. Veuillez sauvegarder ou abandonner les modifications.");
+        return true;
+    }
+    return false;
 }
 
 void MainWindow::on_actionOpen_triggered()

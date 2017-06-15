@@ -176,6 +176,7 @@ private:
 
     // save & load
     void saveAs();
+    bool checkIsEditing();
 };
 
 #endif // MAINWINDOW_H
