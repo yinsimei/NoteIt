@@ -7,6 +7,7 @@
 #include "note.h"
 #include "task.h"
 #include "resource.h"
+#include "relationmanager.h"
 
 NoteManager::Handler NoteManager::handler = NoteManager::Handler();
 
@@ -305,42 +306,45 @@ void NoteManager::restoreNote(int id) {
     if (articles.find(id) != articles.end()) {
         vector<Article *> &articleVersions = articles[id];
         articleVersions.back()->setNoteStatus(e_active);
+        articleVersions.back()->setArchived(false);
         return;
     }
     // Task
     if (tasks.find(id) != tasks.end()) {
         vector<Task *> &taskVersions = tasks[id];
         taskVersions.back()->setNoteStatus(e_active);
+        taskVersions.back()->setArchived(false);
         return;
     }
     // Resource
     if (resources.find(id) != resources.end()) {
         vector<Resource *> &resourceVersions = resources[id];
         resourceVersions.back()->setNoteStatus(e_active);
+        resourceVersions.back()->setArchived(false);
         return;
     }
     Q_ASSERT(0); // ID not found
 }
 
 void NoteManager::deleteNote(int id){
+    Note *note;
     // Article
     if (articles.find(id) != articles.end()) {
         vector<Article *> &articleVersions = articles[id];
-        articleVersions.back()->setNoteStatus(e_deleted);
-        return;
-    }
-    // Task
-    if (tasks.find(id) != tasks.end()) {
+        note = articleVersions.back();
+    } else if (tasks.find(id) != tasks.end()) {
         vector<Task *> &taskVersions = tasks[id];
-        taskVersions.back()->setNoteStatus(e_deleted);
-        return;
-    }
-    if (resources.find(id) != resources.end()) {
+        note = taskVersions.back();
+    } else if (resources.find(id) != resources.end()) {
         vector<Resource *> &resourceVersions = resources[id];
-        resourceVersions.back()->setNoteStatus(e_deleted);
-        return;
+        note = resourceVersions.back();
+    } else {
+        Q_ASSERT(0); // ID not found
     }
-    Q_ASSERT(0); // ID not found
+    note->setNoteStatus(e_deleted);
+    if (!RelationManager::getInstance().deleteAllCouplesOf(id)) {
+        note->setArchived(true);
+    }
 }
 
 

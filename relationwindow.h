@@ -2,6 +2,7 @@
 #define RELATIONWINDOW_H
 
 #include <QDialog>
+#include "deletearchiveddialog.h"
 
 namespace Ui {
 class RelationWindow;
@@ -29,9 +30,12 @@ private slots:
     void on_relation_coupleList_currentRowChanged(int currentRow);
     void on_relation_addCoupleButton_clicked();
     void on_relation_deleteCoupleButton_clicked();
+    void deleteArchivedNote(int id);
 
 private:
     Ui::RelationWindow *ui;
+    DeleteArchivedDialog *deleteArchived;
+
     int currRelationIdx;
     int currCoupleIdx;
     bool clearingRelationList;

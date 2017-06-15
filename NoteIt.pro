@@ -17,7 +17,8 @@ SOURCES += \
     addcouplediag.cpp \
     treeform.cpp \
     relationwindow.cpp \
-    loadsavemanager.cpp
+    loadsavemanager.cpp \
+    deletearchiveddialog.cpp
 
 DISTFILES +=
 
@@ -34,13 +35,15 @@ HEADERS += \
     addcouplediag.h \
     treeform.h \
     relationwindow.h \
-    loadsavemanager.h
+    loadsavemanager.h \
+    deletearchiveddialog.h
 
 FORMS += \
     mainwindow.ui \
     addcouplediag.ui \
     treeform.ui \
-    relationwindow.ui
+    relationwindow.ui \
+    deletearchiveddialog.ui
 
 RESOURCES += \
     resource.qrc

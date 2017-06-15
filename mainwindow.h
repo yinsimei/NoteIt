@@ -10,6 +10,7 @@
 #include "addcouplediag.h"
 #include "treeform.h"
 #include "relationwindow.h"
+#include "deletearchiveddialog.h"
 
 using namespace std;
 
@@ -59,15 +60,11 @@ private slots:
     void on_note_deleteCoupleButton_clicked();
     void on_note_relationCoupleList_currentRowChanged(int currentRow);
     void on_treeitem_doubleclick(int id);
-
+    void deleteArchivedNote(int id);
     void on_actionSave_triggered();
-
     void on_actionSave_as_triggered();
-
     void on_actionOpen_triggered();
-
     void on_resource_urlSelect_clicked();
-
     void on_resource_openUrlButton_clicked();
 
 private:
@@ -75,6 +72,7 @@ private:
     AddCoupleDiag *addCoupleDiag;
     TreeForm *treeForm;
     RelationWindow *relationWindow;
+    DeleteArchivedDialog *deleteArchived;
 
     enum EnumWindowState {
         e_default,
@@ -123,7 +121,7 @@ private:
     bool clearingRelationComboBox;
 
     EnumNoteType getCurrentType();
-    void resetNoteList(EnumNoteType noteType, EnumNoteStatus noteStatus = e_active);
+    void resetNoteList(EnumNoteType noteType);
     void resetRelationList();
     void setToNoteCommun(int id, int ver = -1);
     void setToNote(int id, int ver = -1);

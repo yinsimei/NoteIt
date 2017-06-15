@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1109</width>
+    <width>1100</width>
     <height>888</height>
    </rect>
   </property>
@@ -26,7 +26,7 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_11">
+   <layout class="QHBoxLayout" name="horizontalLayout_12">
     <item>
      <widget class="QWidget" name="mainWidget" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -325,7 +325,7 @@ color: #000000;
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>343</width>
+                 <width>338</width>
                  <height>96</height>
                 </rect>
                </property>
@@ -473,7 +473,7 @@ color: #000000;
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>343</width>
+                 <width>338</width>
                  <height>96</height>
                 </rect>
                </property>
@@ -618,7 +618,7 @@ color: #000000;
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>343</width>
+                 <width>338</width>
                  <height>96</height>
                 </rect>
                </property>
@@ -870,6 +870,24 @@ color: #000000;
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_5">
               <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_11">
+                <item>
+                 <widget class="QLabel" name="note_statusLabel">
+                  <property name="text">
+                   <string>Etat : </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="note_statusText">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
                <widget class="QPushButton" name="trash_restoreButton">
                 <property name="text">
                  <string>Restaurer</string>
@@ -936,7 +954,7 @@ color: #000000;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1109</width>
+     <width>1100</width>
      <height>24</height>
     </rect>
    </property>

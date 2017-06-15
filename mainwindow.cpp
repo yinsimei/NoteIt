@@ -21,10 +21,12 @@ MainWindow::MainWindow(QWidget *parent) :
     setMainWindowState(e_default);
     addCoupleDiag = new AddCoupleDiag(this);
     treeForm = new TreeForm(this);
+    deleteArchived = new DeleteArchivedDialog(this);
     relationWindow = new RelationWindow(this);
 
     // connect signals and slots
     connect(treeForm, SIGNAL(goToNote(int)), this, SLOT(on_treeitem_doubleclick(int)));
+    connect(deleteArchived, SIGNAL(deleteArchived(int)), this, SLOT(deleteArchivedNote(int)));
 
     // default values
     isTreeShown = false;
@@ -52,7 +54,12 @@ MainWindow::~MainWindow()
         delete treeForm;
 }
 
-void MainWindow::resetNoteList(EnumNoteType noteType, EnumNoteStatus noteStatus) {
+void MainWindow::resetNoteList(EnumNoteType noteType) {
+    EnumNoteStatus noteStatus;
+    if (noteType == e_all)
+        noteStatus = e_deleted;
+    else
+        noteStatus = e_active;
     clearingNoteList = true;
     ui->note_listWidget->clear();
     clearingNoteList = false;
@@ -113,6 +120,8 @@ void MainWindow::resetRelationList() {
 void MainWindow::setToNoteCommun(int id, int ver) {
     if (id < 0) {
         ui->note_deleteButton->hide();
+        // clear status
+        ui->note_statusText->setText("");
         // clear date
         ui->note_dateCreateText->setText("");
         ui->note_dateModifText->setText("");
@@ -137,6 +146,8 @@ void MainWindow::setToNoteCommun(int id, int ver) {
         note = NoteManager::getInstance().getLastestNoteVersion(id);
     else
         note = NoteManager::getInstance().getNote(id, ver);
+    ui->note_statusText->setText((note->getNoteStatus() == e_active ?
+                                      "Active" : note->isArchived() ? "Archivée" : "Supprimée"));
     ui->note_dateCreateText->setText(note->getDateCreate().toString());
     ui->note_dateModifText->setText(note->getDateModif().toString());
 
@@ -211,6 +222,7 @@ void MainWindow::showNoteCommon() {
     ui->note_versionWidget->show();
     ui->note_resetVersionButton->hide();
     ui->note_relationWidget->show();
+    ui->note_addCoupleButton->show();
     ui->tree_showHideButton->show();
 }
 
@@ -290,6 +302,8 @@ void MainWindow::setToResource(int id, int ver) {
 
 void MainWindow::showTrash(EnumNoteType noteType) {
     ui->trash_buttonWidget->show();
+    ui->note_relationWidget->show();
+    ui->note_addCoupleButton->hide();
     switch (noteType) {
     case e_article:
         ui->trash_noNote->hide();
@@ -603,7 +617,7 @@ void MainWindow::on_buttonResource_clicked()
 
 void MainWindow::on_buttonTrash_clicked()
 {
-    resetNoteList(e_all, e_deleted);
+    resetNoteList(e_all);
 }
 
 void MainWindow::showTree() {
@@ -744,9 +758,13 @@ void MainWindow::on_trash_deleteButton_clicked()
     EnumNoteType type = getCurrentType();
     Q_ASSERT(type == e_all);
     Q_ASSERT(currNoteInfo[type].currId >= 0);
+    if (NoteManager::getInstance().getLastestNoteVersion(currNoteInfo[type].currId)->isArchived()) {
+        QMessageBox::warning(this, "Attention", "Vous ne pouvez pas supprimer une note dans l'état Archivée");
+        return;
+    }
     NoteManager::getInstance().dropNote(currNoteInfo[type].currId);
     currNoteInfo[type].currId = -1;
-    resetNoteList(e_all, e_deleted);
+    resetNoteList(e_all);
 }
 
 void MainWindow::on_trash_restoreButton_clicked()
@@ -755,7 +773,7 @@ void MainWindow::on_trash_restoreButton_clicked()
     Q_ASSERT(type == e_all);
     Q_ASSERT(currNoteInfo[type].currId >= 0);
     NoteManager::getInstance().restoreNote(currNoteInfo[type].currId);
-    resetNoteList(e_all, e_deleted);
+    resetNoteList(e_all);
 }
 
 void MainWindow::on_note_relationSelect_currentIndexChanged(const QString &arg1)
@@ -779,12 +797,27 @@ void MainWindow::on_note_addCoupleButton_clicked()
 
 void MainWindow::on_note_deleteCoupleButton_clicked()
 {
+    // check
     EnumNoteType type = getCurrentType();
     if (currRelationInfo.currRelation < 0 || currNoteInfo[type].currId < 0 || currRelationInfo.currCoupleIndex < 0) {
         QMessageBox::warning(this, "Attention", "Veuillez sélectionner une couple pour supprimer.");
         return;
     }
+    // delete
     RelationManager::getInstance().deleteCouple(currRelationInfo.currRelation, currRelationInfo.currCouple());
+    // archived note
+    Note *note1 = NoteManager::getInstance().getLastestNoteVersion(currRelationInfo.currCouple().n1);
+    if (note1->isArchived()) {
+        note1->setArchived(false);
+        deleteArchived->setNote(currRelationInfo.currCouple().n1);
+        deleteArchived->exec();
+    }
+    Note *note2 = NoteManager::getInstance().getLastestNoteVersion(currRelationInfo.currCouple().n2);
+    if (note2->isArchived()) {
+        note2->setArchived(false);
+        deleteArchived->setNote(currRelationInfo.currCouple().n2);
+        deleteArchived->exec();
+    }
     resetRelationList();
 }
 
@@ -877,6 +910,12 @@ void MainWindow::on_resource_urlSelect_clicked()
         break;
     }
     ui->resource_url->setText(file);
+}
+
+void MainWindow::deleteArchivedNote(int id) {
+    NoteManager::getInstance().dropNote(id);
+    EnumNoteType type = getCurrentType();
+    resetNoteList(type);
 }
 
 void MainWindow::on_resource_openUrlButton_clicked()
