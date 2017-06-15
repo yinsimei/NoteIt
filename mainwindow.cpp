@@ -1,6 +1,7 @@
 #include <QFileDialog>
 #include <QtGlobal>
 #include <QMessageBox>
+#include <QDesktopServices>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "notemanager.h"
@@ -853,4 +854,35 @@ void MainWindow::on_actionOpen_triggered()
     QString file = QFileDialog::getOpenFileName(this, tr("Ouvrir"), QString(), tr("XML Files (*.xml)"));
     LoadSaveManager::getInstance().setFilename(file);
     LoadSaveManager::getInstance().load();
+}
+
+void MainWindow::on_resource_urlSelect_clicked()
+{
+    if (currState != e_resource_edit || ui->resource_typeText->text() == "")
+        return;
+    QString file;
+    switch (resourceTypeNames.key(ui->resource_typeText->text()))
+    {
+    case e_image:
+        file = QFileDialog::getOpenFileName(this, tr("Ouvrir"), QString(), tr("Image Files (*.png *.jpg *.jpeg *.bmp *.gif)"));
+        break;
+    case e_audio:
+        file = QFileDialog::getOpenFileName(this, tr("Ouvrir"), QString(), tr("Audio Files (*.mp3 *.wav *.ogg)"));
+        break;
+    case e_video:
+        file = QFileDialog::getOpenFileName(this, tr("Ouvrir"), QString(), tr("Video Files (*.mp4 *.mkv *.avi)"));
+        break;
+    default:
+        Q_ASSERT(0);
+        break;
+    }
+    ui->resource_url->setText(file);
+}
+
+void MainWindow::on_resource_openUrlButton_clicked()
+{
+    QString file = ui->resource_url->text();
+    if (file != "")
+        QDesktopServices::openUrl(QUrl::fromLocalFile(file));
+
 }

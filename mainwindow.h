@@ -66,6 +66,10 @@ private slots:
 
     void on_actionOpen_triggered();
 
+    void on_resource_urlSelect_clicked();
+
+    void on_resource_openUrlButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     AddCoupleDiag *addCoupleDiag;
