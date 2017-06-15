@@ -815,6 +815,7 @@ void MainWindow::on_trash_restoreButton_clicked()
     Q_ASSERT(type == e_all);
     Q_ASSERT(currNoteInfo[type].currId >= 0);
     NoteManager::getInstance().restoreNote(currNoteInfo[type].currId);
+    currNoteInfo[type].currId = -1;
     resetNoteList(e_all);
 }
 
