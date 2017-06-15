@@ -33,7 +33,6 @@ protected:
 public:
     /** Constructeur par default
     */
-    Relat
     Relation() : title(""), descp(""), oriented(false), reference(false) {}
     /** Constructeur en copie
      * @param r[in] relation à copier

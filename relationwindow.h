@@ -6,6 +6,7 @@
 
 namespace Ui {
 class RelationWindow;
+}
 
 /** @brief  RelationWindow est l'interface qui permet de gérer, éditer, supprimer, enrichir des relations
  */
