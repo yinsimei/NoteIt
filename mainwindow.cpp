@@ -651,8 +651,8 @@ void MainWindow::on_tree_showHideButton_clicked()
 
 void MainWindow::on_actionArticle_triggered()
 {
-    resetNoteList(e_article);
     setMainWindowState(e_article_edit);
+    resetNoteList(e_article);
     // empty all fields
     currNoteInfo[e_article].currId = -1;
     setToNote(-1);
@@ -664,8 +664,8 @@ void MainWindow::on_actionArticle_triggered()
 
 void MainWindow::on_actionTask_triggered()
 {
-    resetNoteList(e_task);
     setMainWindowState(e_task_edit);
+    resetNoteList(e_task);
     // empty all fields
     currNoteInfo[e_task].currId = -1;
     setToNote(-1);
@@ -677,8 +677,8 @@ void MainWindow::on_actionTask_triggered()
 }
 
 void MainWindow::onCreateResource(ResourceType type) {
-    resetNoteList(e_resource);
     setMainWindowState(e_resource_edit);
+    resetNoteList(e_resource);
     // empty all fields
     currNoteInfo[e_resource].currId = -1;
     setToNote(-1);
