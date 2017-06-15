@@ -140,6 +140,9 @@ void MainWindow::setToNoteCommun(int id, int ver) {
         clearingRelationComboBox = false;
         return;
     }
+    // set tree
+    treeForm->setNoteTree(id);
+
     // set date
     Note *note;
     if (ver < 0)
@@ -754,7 +757,6 @@ void MainWindow::on_note_listWidget_currentRowChanged(int currentRow)
         setTrashView(currNoteInfo[type].currId);
     }
     setToNote(currNoteInfo[type].currId);
-    treeForm->setNoteTree(currNoteInfo[type].currId);
 }
 
 void MainWindow::on_note_versionList_currentRowChanged(int currentRow)

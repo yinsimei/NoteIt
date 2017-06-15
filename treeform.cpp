@@ -16,15 +16,17 @@ TreeForm::~TreeForm()
 }
 
 void TreeForm::setNoteTree(int id) {
-    if (id < 0)
-        return;
     idNote = id;
     parentNotes.clear();
     childNotes.clear();
-    ui->tree_relationNameLabel->setText(NoteManager::getInstance().getLastestNoteVersion(id)->getTitle());
     ui->tree_parentList->clear();
     ui->tree_childList->clear();
+    ui->tree_relationNameLabel->setText("");
 
+    if (id < 0)
+        return;
+
+    ui->tree_relationNameLabel->setText(NoteManager::getInstance().getLastestNoteVersion(id)->getTitle());
     // set list widget
     int nbRelation = RelationManager::getInstance().getRelationNb();
     for (int i = 0; i < nbRelation; ++i) {
