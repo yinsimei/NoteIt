@@ -923,6 +923,8 @@ void MainWindow::on_actionOpen_triggered()
     QString file = QFileDialog::getOpenFileName(this, tr("Ouvrir"), QString(), tr("XML Files (*.xml)"));
     LoadSaveManager::getInstance().setFilename(file);
     LoadSaveManager::getInstance().load();
+    setMainWindowState(e_article_view);
+    resetNoteList(e_article);
 }
 
 void MainWindow::on_resource_urlSelect_clicked()
