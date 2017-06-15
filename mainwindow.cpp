@@ -537,6 +537,10 @@ void MainWindow::on_task_editButton_clicked()
 
 void MainWindow::on_article_saveButton_clicked()
 {
+    if (ui->article_titleEdit->text() == "") {
+        QMessageBox::warning(this, "Attention", "Saisissez un titre pour l'article, svp");
+        return;
+    }
     Article a;
     a.setId(currNoteInfo[e_article].currId);
     a.setDateCreate(QDateTime::fromString(ui->note_dateCreateText->text()));
@@ -550,6 +554,10 @@ void MainWindow::on_article_saveButton_clicked()
 
 void MainWindow::on_resource_saveButton_clicked()
 {
+    if (ui->resource_titleEdit->text() == "") {
+        QMessageBox::warning(this, "Attention", "Saisissez un titre pour le ressource, svp");
+        return;
+    }
     Resource r((ResourceType)resourceTypeNames.key(ui->resource_typeText->text()));
     r.setId(currNoteInfo[e_resource].currId);
     r.setDateCreate(QDateTime::fromString(ui->note_dateCreateText->text()));
@@ -564,6 +572,10 @@ void MainWindow::on_resource_saveButton_clicked()
 
 void MainWindow::on_task_saveButton_clicked()
 {
+    if (ui->task_titleEdit->text() == "") {
+        QMessageBox::warning(this, "Attention", "Saisissez un titre pour la tâche, svp");
+        return;
+    }
     Task t;
     t.setId(currNoteInfo[e_task].currId);
     t.setDateCreate(QDateTime::fromString(ui->note_dateCreateText->text()));
