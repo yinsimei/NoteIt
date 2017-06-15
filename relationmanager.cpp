@@ -1,3 +1,4 @@
+#include "notemanager.h"
 #include "relationmanager.h"
 
 RelationManager::Handler RelationManager::handler = RelationManager::Handler();
@@ -100,4 +101,29 @@ void RelationManager::deleteRelation(int relationIdx) {
 bool RelationManager::checkExist(int relationIdx, int id1, int id2) const {
     Q_ASSERT(relationIdx >= 0 && relationIdx < (int)relations.size());
     return relations[relationIdx]->checkExist(id1, id2);
+}
+
+Relation *RelationManager::getReference() {
+    for (auto it = relations.begin(); it != relations.end(); ++it) {
+        if ((*it)->isReference())
+            return (*it);
+    }
+    Q_ASSERT(0);
+    return NULL;
+}
+
+bool RelationManager::ableToDeleteArchived(int idArchived) {
+    return getReference()->getParents(idArchived).size() == 0;
+}
+
+vector<int> RelationManager::archivedCanBeDeleted() {
+    vector<int> res;
+    vector<int> deletes = NoteManager::getInstance().getNotes(e_deleted);
+    for (auto it = deletes.begin(); it != deletes.end(); ++it) {
+        Note *note = NoteManager::getInstance().getLastestNoteVersion(*it);
+        if (note->isArchived() && ableToDeleteArchived(*it)) {
+            res.push_back(*it);
+        }
+    }
+    return res;
 }

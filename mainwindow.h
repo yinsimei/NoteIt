@@ -63,6 +63,7 @@ private slots:
     void on_note_relationCoupleList_currentRowChanged(int currentRow);
     void on_treeitem_doubleclick(int id);
     void deleteArchivedNote(int id);
+    void setArchivedNoteDeleted(int id);
     void on_actionSave_triggered();
     void on_actionSave_as_triggered();
     void on_actionOpen_triggered();
@@ -177,6 +178,7 @@ private:
     // save & load
     void saveAs();
     bool checkIsEditing();
+    void checkArchivedNote();
 };
 
 #endif // MAINWINDOW_H

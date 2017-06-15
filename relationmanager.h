@@ -96,6 +96,19 @@ public:
      * @param id2[in] l'id de note enfant
     */
     bool checkExist(int relationIdx, int id1, int id2) const;
+
+    /** Obtenir la relation référence
+    */
+    Relation *getReference();
+
+    /** Vérifier si une note archivée peut être supprimée
+     * @param [in] idArchived l'id d'une note archivée
+    */
+    bool ableToDeleteArchived(int idArchived);
+
+    /** Retourner une liste de notes archivée qui peuvent être supprimées après une suppression de note
+    */
+    vector<int> archivedCanBeDeleted();
 };
 
 #endif // RELATIONMANAGER_H

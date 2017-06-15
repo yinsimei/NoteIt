@@ -33,6 +33,7 @@ private slots:
     void on_relation_addCoupleButton_clicked();
     void on_relation_deleteCoupleButton_clicked();
     void deleteArchivedNote(int id);
+    void setArchivedNoteDeleted(int id);
 
 private:
     Ui::RelationWindow *ui;

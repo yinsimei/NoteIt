@@ -29,6 +29,7 @@ signals:
     /** Signal envoyé pour signaler des autres fenêtes à mettre à jour leur interface
     */
     void deleteArchived(int);
+    void notDeleteArchived(int);
 
 private:
     Ui::DeleteArchivedDialog *ui;

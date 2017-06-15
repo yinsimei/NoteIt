@@ -11,6 +11,7 @@ RelationWindow::RelationWindow(QWidget *parent) :
     ui->setupUi(this);
     deleteArchived = new DeleteArchivedDialog(this);
     connect(deleteArchived, SIGNAL(deleteArchived(int)), this, SLOT(deleteArchivedNote(int)));
+    connect(deleteArchived, SIGNAL(notDeleteArchived(int)), this, SLOT(setArchivedNoteDeleted(int)));
 }
 
 RelationWindow::~RelationWindow()
@@ -179,16 +180,10 @@ void RelationWindow::on_relation_deleteCoupleButton_clicked()
     Couple toDelete = RelationManager::getInstance().getRelation(currRelationIdx).getCouples()[currCoupleIdx];
     RelationManager::getInstance().deleteCouple(currRelationIdx, toDelete);
     // archived note
-    Note *note1 = NoteManager::getInstance().getLastestNoteVersion(toDelete.n1);
-    if (note1->isArchived()) {
-        note1->setArchived(false);
-        deleteArchived->setNote(toDelete.n1);
-        deleteArchived->exec();
-    }
-    Note *note2 = NoteManager::getInstance().getLastestNoteVersion(toDelete.n2);
-    if (note2->isArchived()) {
-        note2->setArchived(false);
-        deleteArchived->setNote(toDelete.n2);
+    // check archived note
+    vector<int> archived = RelationManager::getInstance().archivedCanBeDeleted();
+    for (auto it = archived.begin(); it != archived.end(); ++it) {
+        deleteArchived->setNote(*it);
         deleteArchived->exec();
     }
     resetCoupleList();
@@ -196,4 +191,8 @@ void RelationWindow::on_relation_deleteCoupleButton_clicked()
 
 void RelationWindow::deleteArchivedNote(int id) {
     NoteManager::getInstance().dropNote(id);
+}
+
+void RelationWindow::setArchivedNoteDeleted(int id) {
+    NoteManager::getInstance().getLastestNoteVersion(id)->setArchived(false);
 }

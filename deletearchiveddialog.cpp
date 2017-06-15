@@ -24,6 +24,7 @@ void DeleteArchivedDialog::setNote(int id) {
 
 void DeleteArchivedDialog::on_delete_no_clicked()
 {
+    emit notDeleteArchived(id_archived);
     hide();
 }
 

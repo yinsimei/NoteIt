@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // connect signals and slots
     connect(treeForm, SIGNAL(goToNote(int)), this, SLOT(on_treeitem_doubleclick(int)));
     connect(deleteArchived, SIGNAL(deleteArchived(int)), this, SLOT(deleteArchivedNote(int)));
+    connect(deleteArchived, SIGNAL(notDeleteArchived(int)), this, SLOT(setArchivedNoteDeleted(int)));
 
     // default values
     isTreeShown = false;
@@ -788,6 +789,7 @@ void MainWindow::on_note_deleteButton_clicked()
     if (currNoteInfo[type].currId < 0)
         return;
     NoteManager::getInstance().deleteNote(currNoteInfo[type].currId);
+    checkArchivedNote();
     currNoteInfo[type].currId = -1;
     currNoteInfo[type].currVer = -1;
     resetNoteList(type);
@@ -845,17 +847,10 @@ void MainWindow::on_note_deleteCoupleButton_clicked()
     }
     // delete
     RelationManager::getInstance().deleteCouple(currRelationInfo.currRelation, currRelationInfo.currCouple());
-    // archived note
-    Note *note1 = NoteManager::getInstance().getLastestNoteVersion(currRelationInfo.currCouple().n1);
-    if (note1->isArchived()) {
-        note1->setArchived(false);
-        deleteArchived->setNote(currRelationInfo.currCouple().n1);
-        deleteArchived->exec();
-    }
-    Note *note2 = NoteManager::getInstance().getLastestNoteVersion(currRelationInfo.currCouple().n2);
-    if (note2->isArchived()) {
-        note2->setArchived(false);
-        deleteArchived->setNote(currRelationInfo.currCouple().n2);
+    // check archived note
+    vector<int> archived = RelationManager::getInstance().archivedCanBeDeleted();
+    for (auto it = archived.begin(); it != archived.end(); ++it) {
+        deleteArchived->setNote(*it);
         deleteArchived->exec();
     }
     resetRelationList();
@@ -932,6 +927,15 @@ bool MainWindow::checkIsEditing() {
     return false;
 }
 
+void MainWindow::checkArchivedNote() {
+    // check archived note
+    vector<int> archived = RelationManager::getInstance().archivedCanBeDeleted();
+    for (auto it = archived.begin(); it != archived.end(); ++it) {
+        deleteArchived->setNote(*it);
+        deleteArchived->exec();
+    }
+}
+
 void MainWindow::on_actionOpen_triggered()
 {
     QString file = QFileDialog::getOpenFileName(this, tr("Ouvrir"), QString(), tr("XML Files (*.xml)"));
@@ -966,6 +970,15 @@ void MainWindow::on_resource_urlSelect_clicked()
 
 void MainWindow::deleteArchivedNote(int id) {
     NoteManager::getInstance().dropNote(id);
+    EnumNoteType type = getCurrentType();
+    checkArchivedNote();
+    currNoteInfo[type].currId = -1;
+    currNoteInfo[e_all].currId = -1;
+    resetNoteList(type);
+}
+
+void MainWindow::setArchivedNoteDeleted(int id) {
+    NoteManager::getInstance().getLastestNoteVersion(id)->setArchived(false);
     EnumNoteType type = getCurrentType();
     resetNoteList(type);
 }
