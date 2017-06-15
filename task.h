@@ -6,6 +6,8 @@
 
 using namespace std;
 
+/** @brief  Task hérite de Note, qui contient queleques attibuts en plus (par exemple, action, priorité, ...)
+ */
 class Task : public Note {
 private:
     QString action;
@@ -26,7 +28,6 @@ public:
         setDeadline(t.getDeadline());
         setTaskStatus(t.getTaskStatus());
     }
-
 
     const QString &getAction() const { return action; }
     EnumPriority getPriority() const { return priority; }

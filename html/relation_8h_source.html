@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>NoteIt:  Fichier source de relation.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">NoteIt
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">relation.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef RELATION_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define RELATION_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structCouple.html">   11</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structCouple.html">Couple</a> {</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structCouple.html#a8295eea98e696d6f3c66911ba532b03a">   12</a></span>&#160;    QString <a class="code" href="structCouple.html#a8295eea98e696d6f3c66911ba532b03a">label</a>; </div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structCouple.html#a3baa6fbf8083a434ebbc4c6fc00ab64d">   13</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structCouple.html#a3baa6fbf8083a434ebbc4c6fc00ab64d">n1</a>; </div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structCouple.html#aa1ec2663717227c277102726095db9ab">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structCouple.html#aa1ec2663717227c277102726095db9ab">n2</a>; </div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">bool</span> operator==(<a class="code" href="structCouple.html">Couple</a> c);</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="structCouple.html">Couple</a>() : label(<span class="stringliteral">&quot;&quot;</span>), n1(-1), n2(-1) {}</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="structCouple.html">Couple</a>(<span class="keyword">const</span> QString &amp;l, <span class="keywordtype">int</span> _n1, <span class="keywordtype">int</span> _n2) : label(l), n1(_n1), n2(_n2) {}</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classRelation.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRelation.html">Relation</a></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">protected</span>:</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classLoadSaveManager.html">LoadSaveManager</a>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    QString title;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    QString descp;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span> oriented;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">bool</span> reference;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    vector&lt;Couple&gt; couples;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    Relat</div><div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classRelation.html#ae6ccb3609c154ccb43a6d81dd2c9a024">   37</a></span>&#160;    <a class="code" href="classRelation.html#ae6ccb3609c154ccb43a6d81dd2c9a024">Relation</a>() : title(<span class="stringliteral">&quot;&quot;</span>), descp(<span class="stringliteral">&quot;&quot;</span>), oriented(false), reference(false) {}</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classRelation.html">Relation</a>(<span class="keyword">const</span> <a class="code" href="classRelation.html">Relation</a> &amp;r);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classRelation.html">Relation</a>(<span class="keyword">const</span> QString &amp;t, <span class="keyword">const</span> QString &amp;d, <span class="keywordtype">bool</span> o, <span class="keywordtype">bool</span> r = <span class="keyword">false</span>) : title(t), descp(d), oriented(o), reference(r) {}</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> QString &amp;getTitle()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> title; }</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> QString &amp;getDescp()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> descp; }</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">bool</span> isOriented()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> oriented; }</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">bool</span> isReference()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> reference; }</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">const</span> vector&lt;Couple&gt; &amp;getCouples()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> couples; }</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    vector&lt;Couple&gt; getChildren(<span class="keywordtype">int</span> n) <span class="keyword">const</span>;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    vector&lt;Couple&gt; getParents(<span class="keywordtype">int</span> n) <span class="keyword">const</span>;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    vector&lt;Couple&gt; getRelatedNotes(<span class="keywordtype">int</span> n) <span class="keyword">const</span>;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">bool</span> checkExist(<span class="keywordtype">int</span> id1, <span class="keywordtype">int</span> id2) <span class="keyword">const</span>;</div><div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classRelation.html#a9501ba77e6269cf6d07778f8593e8f8b">   68</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRelation.html#a9501ba77e6269cf6d07778f8593e8f8b">setTitle</a>(<span class="keyword">const</span> QString &amp; t) { title = t; }</div><div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classRelation.html#a97709b922f4d955832c3e057dd95e16b">   72</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRelation.html#a97709b922f4d955832c3e057dd95e16b">setDescp</a>(<span class="keyword">const</span> QString &amp; d) { descp = d; }</div><div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classRelation.html#ac7d9f3da2e352b27023509811608316c">   76</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRelation.html#ac7d9f3da2e352b27023509811608316c">setOriented</a>(<span class="keywordtype">bool</span> o) { oriented = o; }</div><div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classRelation.html#a81e0f0bcabf18c0823e3632d2e91aa66">   80</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRelation.html#a81e0f0bcabf18c0823e3632d2e91aa66">setReference</a>(<span class="keywordtype">bool</span> r) { reference = r; }</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">bool</span> addCouple(<span class="keywordtype">int</span> id1, <span class="keywordtype">int</span> id2, <span class="keyword">const</span> QString &amp; label);</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> deleteCouple(<span class="keywordtype">int</span> id1, <span class="keywordtype">int</span> id2);</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> deleteCouple(<a class="code" href="structCouple.html">Couple</a> c);</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">bool</span> deleteAllCouplesOf(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif // RELATION_H</span></div><div class="ttc" id="structCouple_html_a3baa6fbf8083a434ebbc4c6fc00ab64d"><div class="ttname"><a href="structCouple.html#a3baa6fbf8083a434ebbc4c6fc00ab64d">Couple::n1</a></div><div class="ttdeci">int n1</div><div class="ttdoc">id de note parente </div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00013">relation.h:13</a></div></div>
+<div class="ttc" id="classRelation_html_a81e0f0bcabf18c0823e3632d2e91aa66"><div class="ttname"><a href="classRelation.html#a81e0f0bcabf18c0823e3632d2e91aa66">Relation::setReference</a></div><div class="ttdeci">void setReference(bool r)</div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00080">relation.h:80</a></div></div>
+<div class="ttc" id="structCouple_html_a8295eea98e696d6f3c66911ba532b03a"><div class="ttname"><a href="structCouple.html#a8295eea98e696d6f3c66911ba532b03a">Couple::label</a></div><div class="ttdeci">QString label</div><div class="ttdoc">label de couple </div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00012">relation.h:12</a></div></div>
+<div class="ttc" id="classRelation_html_a97709b922f4d955832c3e057dd95e16b"><div class="ttname"><a href="classRelation.html#a97709b922f4d955832c3e057dd95e16b">Relation::setDescp</a></div><div class="ttdeci">void setDescp(const QString &amp;d)</div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00072">relation.h:72</a></div></div>
+<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="classRelation_html"><div class="ttname"><a href="classRelation.html">Relation</a></div><div class="ttdoc">Relation est contient un ensemble de couple de cette même relation, &quot;référence&quot; par exemple...</div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00023">relation.h:23</a></div></div>
+<div class="ttc" id="classLoadSaveManager_html"><div class="ttname"><a href="classLoadSaveManager.html">LoadSaveManager</a></div><div class="ttdoc">LoadSaveManager est une classe singleton qui gère le sauvegarde des informations dans un fichier xml ...</div><div class="ttdef"><b>Definition:</b> <a href="loadsavemanager_8h_source.html#l00009">loadsavemanager.h:9</a></div></div>
+<div class="ttc" id="classRelation_html_ae6ccb3609c154ccb43a6d81dd2c9a024"><div class="ttname"><a href="classRelation.html#ae6ccb3609c154ccb43a6d81dd2c9a024">Relation::Relation</a></div><div class="ttdeci">Relat Relation()</div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00037">relation.h:37</a></div></div>
+<div class="ttc" id="classRelation_html_a9501ba77e6269cf6d07778f8593e8f8b"><div class="ttname"><a href="classRelation.html#a9501ba77e6269cf6d07778f8593e8f8b">Relation::setTitle</a></div><div class="ttdeci">void setTitle(const QString &amp;t)</div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00068">relation.h:68</a></div></div>
+<div class="ttc" id="classRelation_html_ac7d9f3da2e352b27023509811608316c"><div class="ttname"><a href="classRelation.html#ac7d9f3da2e352b27023509811608316c">Relation::setOriented</a></div><div class="ttdeci">void setOriented(bool o)</div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00076">relation.h:76</a></div></div>
+<div class="ttc" id="structCouple_html"><div class="ttname"><a href="structCouple.html">Couple</a></div><div class="ttdoc">Couple est la strcture qui contient des informations sur deux notes. </div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00011">relation.h:11</a></div></div>
+<div class="ttc" id="structCouple_html_aa1ec2663717227c277102726095db9ab"><div class="ttname"><a href="structCouple.html#aa1ec2663717227c277102726095db9ab">Couple::n2</a></div><div class="ttdeci">int n2</div><div class="ttdoc">id de note enfant </div><div class="ttdef"><b>Definition:</b> <a href="relation_8h_source.html#l00014">relation.h:14</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

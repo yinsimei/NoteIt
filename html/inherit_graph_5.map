@@ -1,0 +1,6 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="node1" href="$classNote.html" title="Note est une classe abstraire qui est la classe parente de Article, Resource et Task. " alt="" coords="5,56,56,83"/>
+<area shape="rect" id="node2" href="$classArticle.html" title="Class Article qui hérite de classe Note. " alt="" coords="114,5,173,32"/>
+<area shape="rect" id="node3" href="$classResource.html" title="Resource hérite de Note, qui contient queleques attibuts en plus (url, description de resource..." alt="" coords="104,56,183,83"/>
+<area shape="rect" id="node4" href="$classTask.html" title="Task hérite de Note, qui contient queleques attibuts en plus (par exemple, action, priorité, ...) " alt="" coords="118,107,169,133"/>
+</map>

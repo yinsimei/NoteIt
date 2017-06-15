@@ -5,6 +5,9 @@
 
 using namespace std;
 
+/** @brief   Class Article qui hérite de classe Note
+ *  @author  Simei YIN, Jiacheng ZHOU
+ */
 class Article : public Note
 {
 private:
@@ -13,6 +16,8 @@ private:
 public:
     Article() : Note(), text("") {}
 
+    /** Constructeur d'Article en copie
+    */
     Article(const Article &a) : Note() {
         setDateCreate(a.getDateCreate());
         setTitle(a.getTitle());
@@ -22,7 +27,11 @@ public:
         setText(a.getText());
     }
 
+    /** getter de texte de Article
+    */
     const QString &getText() const {return text;}
+    /** setter de texte de Article
+    */
     void setText(const QString &tx) {text = tx;}
 };
 

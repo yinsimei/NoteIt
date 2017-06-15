@@ -11,6 +11,8 @@ class TreeForm;
 
 using namespace std;
 
+/** @brief   TreeForm est l'interface de l'arbre de relation des notes, qui est une widget affiché sur la fnêtre pricipale
+ */
 class TreeForm : public QWidget
 {
     Q_OBJECT
@@ -18,6 +20,9 @@ class TreeForm : public QWidget
 public:
     explicit TreeForm(QWidget *parent = 0);
     ~TreeForm();
+    /** Initialiser l'interface de l'arbre de relation
+     * @param id[in] l'identifiateur de note à afficher l'arbre
+    */
     void setNoteTree(int id);
 
 signals:

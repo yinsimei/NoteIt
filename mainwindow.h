@@ -19,6 +19,8 @@ class MainWindow;
 }
 class Note;
 
+/** @brief   MainWindow est l'interface principal de l'application NoteIt, qui permet d'afficher, éditer, supprimer une note, et aussi gérer des relations autour d'une note
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -74,20 +76,25 @@ private:
     RelationWindow *relationWindow;
     DeleteArchivedDialog *deleteArchived;
 
+    /** @brief EnumWindowState : une enumération qui permet de classifier différent de états de l'interface de main window */
     enum EnumWindowState {
-        e_default,
-        e_article_view,
-        e_article_edit,
-        e_task_view,
-        e_task_edit,
-        e_resource_view,
-        e_resource_edit,
-        e_trash_article,
-        e_trash_task,
-        e_trash_resource,
-        e_trash_no
+        e_default, /**< default = active*/
+        e_article_view, /**< article, mode de vue*/
+        e_article_edit, /**< article, mode d'édition*/
+        e_task_view, /**< tâche, mode de vue*/
+        e_task_edit, /**< tâche, mode d'édition*/
+        e_resource_view, /**< ressource, mode de vue*/
+        e_resource_edit, /**< ressource, mode d'édition*/
+        e_trash_article, /**< corbeille, vue d'article*/
+        e_trash_task, /**< corbeille, vue de tâche*/
+        e_trash_resource, /**< corbeille, vue de ressource*/
+        e_trash_no /**< corbeille, pas de note*/
     };
 
+    /**
+     * @brief CurrentNoteListInfo : une structure qui enregistre des information sur la dernière note affichée d'une certaine type et aussi
+     * une liste qui permet d'indexer entre la liste de widget et l'identificateur de note
+    */
     struct CurrentNoteListInfo{
         int currId;
         int currVer;
@@ -103,6 +110,10 @@ private:
         CurrentNoteListInfo() : currId(-1), currVer(-1) {}
     };
 
+    /**
+     * @brief CurrentNoteListInfo : une structure qui enregistre des information sur la dernière note affichée d'une certaine type et aussi
+     * une liste qui permet d'indexer entre la liste de widget et l'identificateur de note
+    */
     struct CurrentRelationListInfo{
         int currRelation;
         vector<Couple> coupleList;
@@ -131,14 +142,36 @@ private:
     void onCreateResource(ResourceType type);
 
     // show hide interface
+    /** C'est une state machine qui gère le changement entre des différents état de l'interface
+    @param newStatus[in]
+    */
     void setMainWindowState(EnumWindowState newStatus);
+    /** Afficher la liste de version, date de création/modification etc.
+    */
     void showNoteCommon();
+    /** Cacher la liste de version, date de création/modification etc. si vue de corbeille
+    */
     void hideNoteCommon();
+    /** Afficher tous éléments qui concernent la corbeille, par exemple la bouton de restaurer, etc
+     * et changer l'apparence d'affichage de contenu de note selon son type: article, task, resource
+    @param noteType[in]
+    */
     void showTrash(EnumNoteType noteType);
+    /** Cacher tous éléments qui concernent la corbeille
+    */
     void hideTrash();
+    /** Afficher l'arbre de relation de notes
+    */
     void showTree();
+    /** Cacher l'arbre de relation de notes
+    */
     void hideTree();
+    /** Afficher une des interfaces parmi article, task, resource selon le type
+    @param noteType[in]
+    */
     void setNoteView(EnumNoteType noteType);
+    /** Changer l'apparance de l'interface de corbeille pour article, task, resource
+    */
     void setTrashView(int id);
 
     // save & load

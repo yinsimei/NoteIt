@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>NoteIt:  Fichier source de loadsavemanager.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">NoteIt
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">loadsavemanager.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LOADSAVEMANAGER_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define LOADSAVEMANAGER_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classLoadSaveManager.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLoadSaveManager.html">LoadSaveManager</a></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">struct </span>Handler {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="classLoadSaveManager.html">LoadSaveManager</a>* instance;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        Handler(): instance(<span class="keyword">nullptr</span>) {}</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        ~Handler() { <span class="keywordflow">if</span> (instance) <span class="keyword">delete</span> instance; }</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    };</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">mutable</span> QString filename;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">static</span> Handler handler;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classLoadSaveManager.html">LoadSaveManager</a>();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    ~<a class="code" href="classLoadSaveManager.html">LoadSaveManager</a>();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">static</span> <a class="code" href="classLoadSaveManager.html">LoadSaveManager</a> &amp;<a class="code" href="classLoadSaveManager.html#af8e34179bd0bd2e7c12ea3c919f70e20">getInstance</a>();</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// save &amp; load file</span></div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classLoadSaveManager.html#ad9d0b7ed5e2b71640d57ebdeda78072e">   31</a></span>&#160;<span class="comment"></span>    QString <a class="code" href="classLoadSaveManager.html#ad9d0b7ed5e2b71640d57ebdeda78072e">getFilename</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> filename; }</div><div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classLoadSaveManager.html#a6338de1e83459225338ea41b37a860f8">   34</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLoadSaveManager.html#a6338de1e83459225338ea41b37a860f8">setFilename</a>(<span class="keyword">const</span> QString&amp; f) { filename = f; }</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLoadSaveManager.html#a74fc5edddb3f8626e4941f2f9dde3edf">load</a>(); <span class="comment">// load notes from file filename</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="classLoadSaveManager.html#aabada8d0bfbe70eced0dca32afe84f6e">save</a>() <span class="keyword">const</span>; <span class="comment">// save notes in file filename</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif // LOADSAVEMANAGER_H</span></div><div class="ttc" id="classLoadSaveManager_html_af8e34179bd0bd2e7c12ea3c919f70e20"><div class="ttname"><a href="classLoadSaveManager.html#af8e34179bd0bd2e7c12ea3c919f70e20">LoadSaveManager::getInstance</a></div><div class="ttdeci">static LoadSaveManager &amp; getInstance()</div></div>
+<div class="ttc" id="classLoadSaveManager_html_aabada8d0bfbe70eced0dca32afe84f6e"><div class="ttname"><a href="classLoadSaveManager.html#aabada8d0bfbe70eced0dca32afe84f6e">LoadSaveManager::save</a></div><div class="ttdeci">void save() const </div></div>
+<div class="ttc" id="classLoadSaveManager_html_ad9d0b7ed5e2b71640d57ebdeda78072e"><div class="ttname"><a href="classLoadSaveManager.html#ad9d0b7ed5e2b71640d57ebdeda78072e">LoadSaveManager::getFilename</a></div><div class="ttdeci">QString getFilename() const </div><div class="ttdef"><b>Definition:</b> <a href="loadsavemanager_8h_source.html#l00031">loadsavemanager.h:31</a></div></div>
+<div class="ttc" id="classLoadSaveManager_html"><div class="ttname"><a href="classLoadSaveManager.html">LoadSaveManager</a></div><div class="ttdoc">LoadSaveManager est une classe singleton qui gère le sauvegarde des informations dans un fichier xml ...</div><div class="ttdef"><b>Definition:</b> <a href="loadsavemanager_8h_source.html#l00009">loadsavemanager.h:9</a></div></div>
+<div class="ttc" id="classLoadSaveManager_html_a6338de1e83459225338ea41b37a860f8"><div class="ttname"><a href="classLoadSaveManager.html#a6338de1e83459225338ea41b37a860f8">LoadSaveManager::setFilename</a></div><div class="ttdeci">void setFilename(const QString &amp;f)</div><div class="ttdef"><b>Definition:</b> <a href="loadsavemanager_8h_source.html#l00034">loadsavemanager.h:34</a></div></div>
+<div class="ttc" id="classLoadSaveManager_html_a74fc5edddb3f8626e4941f2f9dde3edf"><div class="ttname"><a href="classLoadSaveManager.html#a74fc5edddb3f8626e4941f2f9dde3edf">LoadSaveManager::load</a></div><div class="ttdeci">void load()</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

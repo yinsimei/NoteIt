@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['getarticle',['getArticle',['../classNoteManager.html#a2e1265424ae34294334f0b8cfb492239',1,'NoteManager']]],
+  ['getarticles',['getArticles',['../classNoteManager.html#a1bc1e49abf806912ce59b4d4eaca3d45',1,'NoteManager']]],
+  ['getarticleversions',['getArticleVersions',['../classNoteManager.html#ac236856e069c991803dde8d544703e42',1,'NoteManager']]],
+  ['getchildren',['getChildren',['../classRelation.html#af2ef0613bdbc1bd2404020c40eaa6cab',1,'Relation']]],
+  ['getchildrennotes',['getChildrenNotes',['../classRelationManager.html#a0c7863fac00c775e44a11c863889026b',1,'RelationManager']]],
+  ['getcouples',['getCouples',['../classRelationManager.html#a2bd3cb1dcb8510e479057ba7b30f7e47',1,'RelationManager']]],
+  ['getdatecreate',['getDateCreate',['../classNote.html#a875aab4b697dcb24550de9f893910391',1,'Note']]],
+  ['getdatemodif',['getDateModif',['../classNote.html#ae3dfa415b791d864686cbe4db6bad9c7',1,'Note']]],
+  ['getfilename',['getFilename',['../classLoadSaveManager.html#ad9d0b7ed5e2b71640d57ebdeda78072e',1,'LoadSaveManager']]],
+  ['getid',['getId',['../classNote.html#a36f9ea9346b10ef3fd00b9940ec7a2fa',1,'Note']]],
+  ['getinstance',['getInstance',['../classLoadSaveManager.html#af8e34179bd0bd2e7c12ea3c919f70e20',1,'LoadSaveManager']]],
+  ['getlastestarticleversion',['getLastestArticleVersion',['../classNoteManager.html#a5231b071ac608365fa03f813fe2a4117',1,'NoteManager']]],
+  ['getlastestnoteversion',['getLastestNoteVersion',['../classNoteManager.html#a5ed9096981cc6ed3523562fd56948eb7',1,'NoteManager']]],
+  ['getnote',['getNote',['../classNoteManager.html#a60c1d94db0b9d0f7a2efb6b26573a019',1,'NoteManager']]],
+  ['getnotes',['getNotes',['../classNoteManager.html#ac0cecbc7bd5d9dc436515211346c6bb5',1,'NoteManager::getNotes(EnumNoteType noteType, EnumNoteStatus noteStatus)'],['../classNoteManager.html#a3165efc798cc31f66be579db3f60fa2f',1,'NoteManager::getNotes(EnumNoteStatus noteStatus)']]],
+  ['getnotestatus',['getNoteStatus',['../classNote.html#a420dde7778dc33a840d61f0f197153bf',1,'Note']]],
+  ['getnotetype',['getNoteType',['../classNoteManager.html#aa5c4b06c82d8fb5d1d390d9c966fd6e1',1,'NoteManager']]],
+  ['getnoteversions',['getNoteVersions',['../classNoteManager.html#ab28f440c728d7d7257e9bd1f1ade2d77',1,'NoteManager']]],
+  ['getparentnotes',['getParentNotes',['../classRelationManager.html#a9d3e20e27c7c6d51a08bc35046af058d',1,'RelationManager']]],
+  ['getparents',['getParents',['../classRelation.html#abf25797834ca9c0b0f87b399ab9b28b5',1,'Relation']]],
+  ['getrelatednotes',['getRelatedNotes',['../classRelation.html#ab651f4cbf27526c09c0b24b5734cf66a',1,'Relation::getRelatedNotes()'],['../classRelationManager.html#af01d49917948a157eb8b64fa918d1c41',1,'RelationManager::getRelatedNotes()']]],
+  ['gettext',['getText',['../classArticle.html#a9698d53f05f9b21c03a9acf891e9275e',1,'Article']]],
+  ['gettitle',['getTitle',['../classNote.html#a132f0d73c7e70a57836daa25b7edcd2f',1,'Note']]]
+];

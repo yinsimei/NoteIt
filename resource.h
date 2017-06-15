@@ -5,6 +5,8 @@
 
 using namespace std;
 
+/** @brief  Resource hérite de Note, qui contient queleques attibuts en plus (url, description de resource, ...)
+ */
 class Resource :  public Note {
 private:
     friend class LoadSaveManager;

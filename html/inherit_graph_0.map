@@ -1,0 +1,4 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="node2" href="$classAddCoupleDiag.html" title="Pop&#45;up dialogue qui permet de créer une couple de note par choisir la deuxième note dans une liste..." alt="" coords="140,5,253,32"/>
+<area shape="rect" id="node3" href="$classDeleteArchivedDialog.html" title="Pop&#45;up window qui demande si l&#39;utilisateur veut supprimer une note archivée quand les couple qui le c..." alt="" coords="123,56,271,83"/>
+</map>
