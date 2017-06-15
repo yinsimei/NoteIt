@@ -13,7 +13,7 @@ private:
 public:
     EnumNames() : cnt(0) {}
     /** On surcharge l'opérateur << pour donner les QString pour des enums en ordre
-     @param s[in] string d'un enum
+     @param [in] s string d'un enum
     */
     inline EnumNames &operator<< (const QString &s) {
         insert(cnt, s);

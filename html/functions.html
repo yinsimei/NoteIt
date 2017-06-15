@@ -84,6 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
       <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
@@ -121,7 +122,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 : <a class="el" href="classAddCoupleDiag.html#a27b2ef7f25b1b8b32bc7dbfe8d342145">AddCoupleDiag</a>
 </li>
 <li>addRelation()
-: <a class="el" href="classRelationManager.html#a4f58c2ee9507c95f89a648f91e223298">RelationManager</a>
+: <a class="el" href="classRelationManager.html#a0519dd0fe5d3b2323155d9c1f12bba37">RelationManager</a>
+</li>
+<li>addResource()
+: <a class="el" href="classNoteManager.html#afd62e300171ee40d1fa8cb097654ea74">NoteManager</a>
+</li>
+<li>addTask()
+: <a class="el" href="classNoteManager.html#a0a789c3bc0a12063506a3cbc6c216c09">NoteManager</a>
 </li>
 <li>archived
 : <a class="el" href="classNote.html#a0a546025f72490cd85858e01e3a212f7">Note</a>
@@ -141,7 +148,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 , <a class="el" href="classRelationManager.html#a47bec251fb162e62abebe5952cb74031">RelationManager</a>
 </li>
 <li>clear()
-: <a class="el" href="classRelationManager.html#ab8482667146123f2b13b6b0b56385188">RelationManager</a>
+: <a class="el" href="classNoteManager.html#a3f32f1aa61144b5f8ccd1a16ea335fc3">NoteManager</a>
+, <a class="el" href="classRelationManager.html#ab8482667146123f2b13b6b0b56385188">RelationManager</a>
+</li>
+<li>Couple()
+: <a class="el" href="structCouple.html#a9302f43d53b9b947f2668c42ed196b79">Couple</a>
+</li>
+<li>couples
+: <a class="el" href="classRelation.html#a2c94ebd0ffcb3b42ee127c539193b77d">Relation</a>
 </li>
 <li>cur_id
 : <a class="el" href="classNoteManager.html#ac82cfff49269821c6d410c4189f5c13c">NoteManager</a>
@@ -163,8 +177,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>deleteArchived()
 : <a class="el" href="classDeleteArchivedDialog.html#a7841adfcd0d50dfc8816a72979a630c2">DeleteArchivedDialog</a>
 </li>
+<li>DeleteArchivedDialog()
+: <a class="el" href="classDeleteArchivedDialog.html#a27d86a9565f13a42a2b5d688d9504b50">DeleteArchivedDialog</a>
+</li>
 <li>deleteCouple()
-: <a class="el" href="classRelation.html#afcb9289c8113aa5d7960f56c0bf2e058">Relation</a>
+: <a class="el" href="classRelation.html#a9cf8cfae264486fef6150100ecddd171">Relation</a>
 , <a class="el" href="classRelationManager.html#a0d5d26321a4a609649ffecd2d086dc7f">RelationManager</a>
 </li>
 <li>deleteNote()
@@ -173,6 +190,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>deleteRelation()
 : <a class="el" href="classRelationManager.html#a71a000d760a2e3836f4deb945412d985">RelationManager</a>
 </li>
+<li>descp
+: <a class="el" href="classRelation.html#a1b37fbee83b109d017f582902153d353">Relation</a>
+</li>
 <li>dropNote()
 : <a class="el" href="classNoteManager.html#ae95af909fd6db62753d027b9d90f4776">NoteManager</a>
 </li>
@@ -180,6 +200,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>getAction()
+: <a class="el" href="classTask.html#ad0b55af94bfa7a224dc10aa9fab1e0ca">Task</a>
+</li>
 <li>getArticle()
 : <a class="el" href="classNoteManager.html#a2e1265424ae34294334f0b8cfb492239">NoteManager</a>
 </li>
@@ -196,7 +219,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 : <a class="el" href="classRelationManager.html#a0c7863fac00c775e44a11c863889026b">RelationManager</a>
 </li>
 <li>getCouples()
-: <a class="el" href="classRelationManager.html#a2bd3cb1dcb8510e479057ba7b30f7e47">RelationManager</a>
+: <a class="el" href="classRelation.html#a419367e7e07542ef539365fc9f33cbd6">Relation</a>
+, <a class="el" href="classRelationManager.html#a2bd3cb1dcb8510e479057ba7b30f7e47">RelationManager</a>
 </li>
 <li>getDateCreate()
 : <a class="el" href="classNote.html#a875aab4b697dcb24550de9f893910391">Note</a>
@@ -204,20 +228,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>getDateModif()
 : <a class="el" href="classNote.html#ae3dfa415b791d864686cbe4db6bad9c7">Note</a>
 </li>
+<li>getDeadline()
+: <a class="el" href="classTask.html#ace715e69e174c3ee82cfc9fd4ddb7c4f">Task</a>
+</li>
+<li>getDescp()
+: <a class="el" href="classRelation.html#a0c2cf67b6712f88905669a5388727abe">Relation</a>
+, <a class="el" href="classResource.html#a0d4aa66fc48501e9d7180c646bb76557">Resource</a>
+</li>
 <li>getFilename()
 : <a class="el" href="classLoadSaveManager.html#ad9d0b7ed5e2b71640d57ebdeda78072e">LoadSaveManager</a>
 </li>
 <li>getId()
 : <a class="el" href="classNote.html#a36f9ea9346b10ef3fd00b9940ec7a2fa">Note</a>
 </li>
+<li>getIdxFromTitle()
+: <a class="el" href="classRelationManager.html#a71caed500f1831ad58677741a7ddf2ed">RelationManager</a>
+</li>
 <li>getInstance()
 : <a class="el" href="classLoadSaveManager.html#af8e34179bd0bd2e7c12ea3c919f70e20">LoadSaveManager</a>
+, <a class="el" href="classNoteManager.html#ac32963e63bd52b2b7de80f42c2b5e317">NoteManager</a>
+, <a class="el" href="classRelationManager.html#a373c5b354fd5f0b3f4b7884913a6c11a">RelationManager</a>
 </li>
 <li>getLastestArticleVersion()
 : <a class="el" href="classNoteManager.html#a5231b071ac608365fa03f813fe2a4117">NoteManager</a>
 </li>
 <li>getLastestNoteVersion()
 : <a class="el" href="classNoteManager.html#a5ed9096981cc6ed3523562fd56948eb7">NoteManager</a>
+</li>
+<li>getLastestResourceVersion()
+: <a class="el" href="classNoteManager.html#a129c651f22fccdc6ed2f4b5ff200cbc6">NoteManager</a>
+</li>
+<li>getLastestTaskVersion()
+: <a class="el" href="classNoteManager.html#a8a4ed210c7412f92644cbec34739dd31">NoteManager</a>
+</li>
+<li>getMsg()
+: <a class="el" href="classNotesException.html#abfcf01a1cbe6e810b7ad1d3aee688583">NotesException</a>
 </li>
 <li>getNote()
 : <a class="el" href="classNoteManager.html#a60c1d94db0b9d0f7a2efb6b26573a019">NoteManager</a>
@@ -240,15 +285,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>getParents()
 : <a class="el" href="classRelation.html#abf25797834ca9c0b0f87b399ab9b28b5">Relation</a>
 </li>
+<li>getPriority()
+: <a class="el" href="classTask.html#ad725d95ed9fa13900d133f60e1bc2de3">Task</a>
+</li>
 <li>getRelatedNotes()
 : <a class="el" href="classRelation.html#ab651f4cbf27526c09c0b24b5734cf66a">Relation</a>
 , <a class="el" href="classRelationManager.html#af01d49917948a157eb8b64fa918d1c41">RelationManager</a>
+</li>
+<li>getRelation()
+: <a class="el" href="classRelationManager.html#a5f9758c984a9bc5ba968c2b6f293063e">RelationManager</a>
+</li>
+<li>getRelationNb()
+: <a class="el" href="classRelationManager.html#a187b63bedbdf587ee861f114ccabd3a3">RelationManager</a>
+</li>
+<li>getResource()
+: <a class="el" href="classNoteManager.html#a7420dac2dc649715fa87e819dbea0c17">NoteManager</a>
+</li>
+<li>getResources()
+: <a class="el" href="classNoteManager.html#a95d83c72ad5057605297fb5a8394a9ac">NoteManager</a>
+</li>
+<li>getResourceVersions()
+: <a class="el" href="classNoteManager.html#a61b8027799c1793bc992927db859e2a8">NoteManager</a>
+</li>
+<li>getTask()
+: <a class="el" href="classNoteManager.html#a3491c184f299b5edcdfcb074df24c89d">NoteManager</a>
+</li>
+<li>getTasks()
+: <a class="el" href="classNoteManager.html#a4126d59ff122e366524204b57433946f">NoteManager</a>
+</li>
+<li>getTaskStatus()
+: <a class="el" href="classTask.html#a7569a0fe5a8ea30193978ac74ffce6e9">Task</a>
+</li>
+<li>getTaskVersions()
+: <a class="el" href="classNoteManager.html#a7f57f57c59b31d132274492e86641f15">NoteManager</a>
 </li>
 <li>getText()
 : <a class="el" href="classArticle.html#a9698d53f05f9b21c03a9acf891e9275e">Article</a>
 </li>
 <li>getTitle()
 : <a class="el" href="classNote.html#a132f0d73c7e70a57836daa25b7edcd2f">Note</a>
+, <a class="el" href="classRelation.html#abdadb67e4a49c2640e549ef30ce960cb">Relation</a>
+</li>
+<li>getType()
+: <a class="el" href="classResource.html#a274c38986431e7494bffc5d1f93d85c8">Resource</a>
+</li>
+<li>getUrl()
+: <a class="el" href="classResource.html#abd9bb7aac4b7084606fd64b3020a8acc">Resource</a>
+</li>
+<li>goToNote()
+: <a class="el" href="classTreeForm.html#afb66593c7d99d4c3bdf9de282a98701b">TreeForm</a>
 </li>
 </ul>
 
@@ -256,6 +341,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
 <li>handler
 : <a class="el" href="classNoteManager.html#a6c9cdcae74902d665f11bea3319d7cff">NoteManager</a>
+, <a class="el" href="classRelationManager.html#acc04ed56b052e4af874cb53c8a72b746">RelationManager</a>
 </li>
 </ul>
 
@@ -264,8 +350,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>id
 : <a class="el" href="classNote.html#aed4975fa56ebcd7c8396ca8a2d5e241c">Note</a>
 </li>
+<li>instance
+: <a class="el" href="structNoteManager_1_1Handler.html#ac1293ee848bca858d5296b173cd7e9c5">NoteManager::Handler</a>
+, <a class="el" href="structRelationManager_1_1Handler.html#a3a0fed0e7a0221de36732c18cda574b8">RelationManager::Handler</a>
+</li>
 <li>isArchived()
 : <a class="el" href="classNote.html#a3d709e0bc695b2c3d2f878fec5e292ac">Note</a>
+</li>
+<li>isOriented()
+: <a class="el" href="classRelation.html#a7a04adea59c3c7b3bf46ade22dd873c1">Relation</a>
+</li>
+<li>isReference()
+: <a class="el" href="classRelation.html#ab9716d5bfb09551ae76f33fcab2b007a">Relation</a>
 </li>
 </ul>
 
@@ -280,12 +376,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </ul>
 
 
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>MainWindow()
+: <a class="el" href="classMainWindow.html#a8b244be8b7b7db1b08de2a2acb9409db">MainWindow</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
 <li>n1
 : <a class="el" href="structCouple.html#a3baa6fbf8083a434ebbc4c6fc00ab64d">Couple</a>
 </li>
 <li>n2
 : <a class="el" href="structCouple.html#aa1ec2663717227c277102726095db9ab">Couple</a>
+</li>
+<li>NotesException()
+: <a class="el" href="classNotesException.html#abe029945e4796ce6e8b35ea2fafd9d6a">NotesException</a>
 </li>
 <li>noteStatus
 : <a class="el" href="classNote.html#a772cdea05990465f144f7e4b8366d70c">Note</a>
@@ -297,15 +403,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>operator&lt;&lt;()
 : <a class="el" href="classEnumNames.html#a49b11824eb609e25a5630b0ecd7b7c19">EnumNames</a>
 </li>
+<li>operator==()
+: <a class="el" href="structCouple.html#af7870d6f03a80d442a97453c7211d491">Couple</a>
+</li>
+<li>oriented
+: <a class="el" href="classRelation.html#acb9c791f099095e414229c7a6329eb34">Relation</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>reference
+: <a class="el" href="classRelation.html#a66f95b3b746f6f27807044e9f4de4138">Relation</a>
+</li>
 <li>Relation()
-: <a class="el" href="classRelation.html#ae6ccb3609c154ccb43a6d81dd2c9a024">Relation</a>
+: <a class="el" href="classRelation.html#a55f2c9d5ae6413cb72c114e583e359ef">Relation</a>
+</li>
+<li>relations
+: <a class="el" href="classRelationManager.html#ac234ed878aafd37b7d2d9271e3878882">RelationManager</a>
+</li>
+<li>RelationWindow()
+: <a class="el" href="classRelationWindow.html#a9da13899318817046d0b0c8ff05ce3a1">RelationWindow</a>
 </li>
 <li>resetToVersion()
 : <a class="el" href="classNoteManager.html#a7b207ab44dbe3285e658d2cdf8b4f65b">NoteManager</a>
+</li>
+<li>Resource()
+: <a class="el" href="classResource.html#a3e412bcc9726d12372d552a57f08a051">Resource</a>
 </li>
 <li>resources
 : <a class="el" href="classNoteManager.html#a9d14df338755010d83fe67b340224d85">NoteManager</a>
@@ -320,6 +444,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>save()
 : <a class="el" href="classLoadSaveManager.html#aabada8d0bfbe70eced0dca32afe84f6e">LoadSaveManager</a>
 </li>
+<li>setAction()
+: <a class="el" href="classTask.html#a7e48e6199f635b574f56f06d2e67c8c7">Task</a>
+</li>
 <li>setArchived()
 : <a class="el" href="classNote.html#a69e7c49bc05226490083e4b078c180e3">Note</a>
 </li>
@@ -329,8 +456,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>setDateModif()
 : <a class="el" href="classNote.html#afb2fe380cb3a9d9fe81f99218d503b69">Note</a>
 </li>
+<li>setDeadline()
+: <a class="el" href="classTask.html#a4e6ed979171fd27751cb3edbc4deeb07">Task</a>
+</li>
 <li>setDescp()
 : <a class="el" href="classRelation.html#a97709b922f4d955832c3e057dd95e16b">Relation</a>
+, <a class="el" href="classResource.html#a9ec38da8620826967eb4484896589b40">Resource</a>
 </li>
 <li>setFilename()
 : <a class="el" href="classLoadSaveManager.html#a6338de1e83459225338ea41b37a860f8">LoadSaveManager</a>
@@ -353,8 +484,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>setOriented()
 : <a class="el" href="classRelation.html#ac7d9f3da2e352b27023509811608316c">Relation</a>
 </li>
+<li>setPriority()
+: <a class="el" href="classTask.html#a9934060e60f98bcd9e4b75101a51cdbb">Task</a>
+</li>
 <li>setReference()
 : <a class="el" href="classRelation.html#a81e0f0bcabf18c0823e3632d2e91aa66">Relation</a>
+</li>
+<li>setTaskStatus()
+: <a class="el" href="classTask.html#aa13dfd8aebcce1acaa205f52444d65f0">Task</a>
 </li>
 <li>setText()
 : <a class="el" href="classArticle.html#a30a3814065ce8f742bc5c013907af458">Article</a>
@@ -363,15 +500,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 : <a class="el" href="classNote.html#a7a9ca310664f058b56ccc33005688e25">Note</a>
 , <a class="el" href="classRelation.html#a9501ba77e6269cf6d07778f8593e8f8b">Relation</a>
 </li>
+<li>setType()
+: <a class="el" href="classResource.html#afada5a0003c9926ba9d89ac4cc25c3c0">Resource</a>
+</li>
+<li>setUrl()
+: <a class="el" href="classResource.html#a34add711e23c9f745b850274572ac28b">Resource</a>
+</li>
+<li>showEvent()
+: <a class="el" href="classRelationWindow.html#a9af36d278d7753b3e16fd5c11ffe40fb">RelationWindow</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>Task()
+: <a class="el" href="classTask.html#a0ca53354bdc006762a0fda68c64f7608">Task</a>
+</li>
 <li>tasks
 : <a class="el" href="classNoteManager.html#adfa154c56349a85208ae8a0d986a4fd9">NoteManager</a>
 </li>
 <li>title
 : <a class="el" href="classNote.html#ae8e10911c66931c9285925e1760816fd">Note</a>
+, <a class="el" href="classRelation.html#ad0836c38823b8ca28c825a74f94ef70f">Relation</a>
+</li>
+<li>TreeForm()
+: <a class="el" href="classTreeForm.html#ae4d9517bd5cb8416ff485efe3615be8d">TreeForm</a>
 </li>
 </ul>
 </div><!-- contents -->

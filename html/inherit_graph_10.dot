@@ -1,0 +1,7 @@
+digraph "Graphe hiérarchique des classes"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="RelationManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRelationManager.html",tooltip="RelationManager est une classe sigleton qui permet de gérer tout ce qui concenrne des relations..."];
+}

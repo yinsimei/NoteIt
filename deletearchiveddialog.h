@@ -15,6 +15,8 @@ class DeleteArchivedDialog : public QDialog
     Q_OBJECT
 
 public:
+    /** constructeur de deleteArchiveDialog
+     */
     explicit DeleteArchivedDialog(QWidget *parent = 0);
     ~DeleteArchivedDialog();
     /** méthode qui permet d'initialiser l'interface avec l'identificateur de note archivée en entrée

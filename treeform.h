@@ -18,14 +18,18 @@ class TreeForm : public QWidget
     Q_OBJECT
 
 public:
+    /** constructeur de TreeForm
+    */
     explicit TreeForm(QWidget *parent = 0);
     ~TreeForm();
     /** Initialiser l'interface de l'arbre de relation
-     * @param id[in] l'identifiateur de note à afficher l'arbre
+     * @param [in] id l'identifiateur de note à afficher l'arbre
     */
     void setNoteTree(int id);
 
 signals:
+    /** Signal envoyé pour aller a la note
+    */
     void goToNote(int);
 
 private slots:

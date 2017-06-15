@@ -25,7 +25,12 @@ class NotesException {
 private:
     QString msg;
 public:
+    /** Constructeur
+     * @param [in] m message à afficher
+    */
     NotesException(const QString &m) : msg(m) {}
+    /** accesseur au message en lecture
+    */
     QString getMsg() const { return msg; }
 };
 
@@ -40,7 +45,7 @@ protected:
      * @brief singleton Handler
     */
     struct Handler {
-        NoteManager* instance;
+        NoteManager* instance; ///< singleton instance
         Handler(): instance(nullptr) {}
         ~Handler() { if (instance) delete instance; }
     };
@@ -54,89 +59,125 @@ protected:
     ~NoteManager();
 
 public:
+    /** singleton
+    */
     static NoteManager &getInstance();
+    /** supprimer tous les notes
+    */
     void clear();
 
     // Articles
     /** Getter d'un article selon
-     * @param id[in] l'identificateur
-     * @param version[in] l'index de version dans vector
+     * @param [in] id l'identificateur
+     * @param [in] version l'index de version dans vector
     */
     Article *getArticle(int id, int version);
     /** Getter de la dernière version d'article
-     * @param id[in] l'identificateur
+     * @param [in] id l'identificateur
     */
     Article *getLastestArticleVersion(int id);
     /** Getter de toutes les version d'un article
-     * @param id[in] l'identificateur
+     * @param [in] id l'identificateur
     */
     vector<Article *> &getArticleVersions(int id);
     /** Getter d'un ensemble des identificateurs des articles d'un certain état
-     * @param noteStatus[in] l'état de note
+     * @param [in] noteStatus l'état de note
     */
     vector<int> getArticles(EnumNoteStatus noteStatus);
     /** Ajouter un nouvel article/une nouvelle version d'article dans la liste, determiné par l'existenece de son id ou pas
-     * @param a[in] article en entrée
+     * @param [in] a article en entrée
     */
     int addArticle(const Article& a);
 
     // Tasks
+    /** Getter d'une tache selon
+     * @param [in] id l'identificateur
+     * @param [in] version l'index de version dans vector
+    */
     Task *getTask(int id, int version);
+    /** Getter de la dernière version de tache
+     * @param [in] id l'identificateur
+    */
     Task *getLastestTaskVersion(int id);
+    /** Getter de toutes les version d'une tache
+     * @param [in] id l'identificateur
+    */
     vector<Task *> &getTaskVersions(int id);
+    /** Getter d'un ensemble des identificateurs des taches d'un certain état
+     * @param [in] noteStatus l'état de note
+    */
     vector<int> getTasks(EnumNoteStatus noteStatus);
+    /** Ajouter un nouveau tache/une nouvelle version de tache dans la liste, determiné par l'existenece de son id ou pas
+     * @param [in] note tache en entrée
+    */
     int addTask(const Task& note);
 
     // Resources
+    /** Getter d'une ressource selon
+     * @param [in] id l'identificateur
+     * @param [in] version l'index de version dans vector
+    */
     Resource *getResource(int id, int version);
+    /** Getter de la dernière version de ressource
+     * @param [in] id l'identificateur
+    */
     Resource *getLastestResourceVersion(int id);
+    /** Getter de toutes les version d'une ressource
+     * @param [in] id l'identificateur
+    */
     vector<Resource *> &getResourceVersions(int id);
+    /** Getter d'un ensemble des identificateurs des ressource d'un certain état
+     * @param [in] noteStatus l'état de note
+    */
     vector<int> getResources(EnumNoteStatus noteStatus);
+    /** Ajouter une nouvelle ressource/une nouvelle version de ressource dans la liste, determiné par l'existenece de son id ou pas
+     * @param [in] r ressource en entrée
+    */
     int addResource(const Resource& r);
 
     // Notes
     /** Getter d'une note
-     * @param id[in] l'identificateur de note
-     * @param version[in] l'index de version dans vector
+     * @param [in] id l'identificateur de note
+     * @param [in] version l'index de version dans vector
     */
     Note *getNote(int id, int version);
     /** Getter de la dernière version de note
-     * @param id[in] l'identificateur de note
+     * @param [in] id l'identificateur de note
     */
     Note *getLastestNoteVersion(int id);
     /** Getter de toutes les version de note
-     * @param id[in] l'identificateur de note
+     * @param [in] id l'identificateur de note
     */
     vector<Note *> getNoteVersions(int id);
     /** Getter d'un ensemble des identificateurs de certain type d'un certain état
-     * @param noteStatus[in] l'état de note
-     * @param noteType[in] le type de note
+     * @param [in] noteStatus l'état de note
+     * @param [in] noteType le type de note
     */
     vector<int> getNotes(EnumNoteType noteType, EnumNoteStatus noteStatus);
     /** Getter d'un ensemble des identificateurs d'un certain état
-     * @param noteStatus[in] l'état de note
+     * @param [in] noteStatus l'état de note
     */
     vector<int> getNotes(EnumNoteStatus noteStatus);
     /** Reset de note à une ancienne version
-     * @param id[in] l'identificateur de note à reset
-     * @param index[in] l'index de version
+     * @param [in] id l'identificateur de note à reset
+     * @param [in] index l'index de version
     */
     void resetToVersion(int id, int index);
     /** Restaurer une note du corbeille
-     * @param id[in] l'identificateur de note à restaurer
+     * @param [in] id l'identificateur de note à restaurer
     */
     void restoreNote(int id);
     /** Mettre une note dans la corbeille
-     * @param id[in] l'identificateur de note à supprimer (mettre en corbeille)
+     * @param [in] id l'identificateur de note à supprimer (mettre en corbeille)
     */
     void deleteNote(int id);
     /** Supprimer une note définitivement
-     * @param id[in] l'identificateur de note à Supprimer définitivement
+     * @param [in] id l'identificateur de note à Supprimer définitivement
     */
     void dropNote(int id);
 
     /** Obtenir le type de note à partir de son id
-     * @param id[in] l'identificateur de note
+     * @param [in] id l'identificateur de note
     */
     EnumNoteType getNoteType(int id);
 };

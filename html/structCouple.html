@@ -100,11 +100,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
-<tr class="memitem:af7870d6f03a80d442a97453c7211d491"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7870d6f03a80d442a97453c7211d491"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (<a class="el" href="structCouple.html">Couple</a> c)</td></tr>
+<tr class="memitem:af7870d6f03a80d442a97453c7211d491"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCouple.html#af7870d6f03a80d442a97453c7211d491">operator==</a> (<a class="el" href="structCouple.html">Couple</a> c)</td></tr>
 <tr class="separator:af7870d6f03a80d442a97453c7211d491"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64ffb675ca51af7449f2a0b803116f1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64ffb675ca51af7449f2a0b803116f1c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Couple</b> (const QString &amp;l, int _n1, int _n2)</td></tr>
+<tr class="memitem:a9302f43d53b9b947f2668c42ed196b79"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCouple.html#a9302f43d53b9b947f2668c42ed196b79">Couple</a> ()</td></tr>
+<tr class="separator:a9302f43d53b9b947f2668c42ed196b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64ffb675ca51af7449f2a0b803116f1c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCouple.html#a64ffb675ca51af7449f2a0b803116f1c">Couple</a> (const QString &amp;l, int _n1, int _n2)</td></tr>
 <tr class="separator:a64ffb675ca51af7449f2a0b803116f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -126,7 +126,107 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
 <div class="textblock"><p><a class="el" href="structCouple.html" title="Couple est la strcture qui contient des informations sur deux notes. ">Couple</a> est la strcture qui contient des informations sur deux notes. </p>
 
 <p>Définition à la ligne <a class="el" href="relation_8h_source.html#l00011">11</a> du fichier <a class="el" href="relation_8h_source.html">relation.h</a>.</p>
-</div><hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a class="anchor" id="a9302f43d53b9b947f2668c42ed196b79"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Couple::Couple </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructeur par défaut </p>
+
+<p>Définition à la ligne <a class="el" href="relation_8h_source.html#l00021">21</a> du fichier <a class="el" href="relation_8h_source.html">relation.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a64ffb675ca51af7449f2a0b803116f1c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Couple::Couple </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_n2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructeur </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>label de couple </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_n1</td><td>l'id note de parent dans la couple </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_n2</td><td>l'id note d'enfant dans la couple </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="relation_8h_source.html#l00027">27</a> du fichier <a class="el" href="relation_8h_source.html">relation.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions membres</h2>
+<a class="anchor" id="af7870d6f03a80d442a97453c7211d491"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Couple::operator== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCouple.html">Couple</a>&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>operateur de copie </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>couple à copier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
 <li><a class="el" href="relation_8h_source.html">relation.h</a></li>
 </ul>
 </div><!-- contents -->

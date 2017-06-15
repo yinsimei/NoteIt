@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['tasks',['tasks',['../classNoteManager.html#adfa154c56349a85208ae8a0d986a4fd9',1,'NoteManager']]],
-  ['title',['title',['../classNote.html#ae8e10911c66931c9285925e1760816fd',1,'Note']]]
+  ['reference',['reference',['../classRelation.html#a66f95b3b746f6f27807044e9f4de4138',1,'Relation']]],
+  ['relations',['relations',['../classRelationManager.html#ac234ed878aafd37b7d2d9271e3878882',1,'RelationManager']]],
+  ['resources',['resources',['../classNoteManager.html#a9d14df338755010d83fe67b340224d85',1,'NoteManager']]]
 ];

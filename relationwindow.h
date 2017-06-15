@@ -15,10 +15,14 @@ class RelationWindow : public QDialog
     Q_OBJECT
 
 public:
+    /** constructeur de RelationWindow
+    */
     explicit RelationWindow(QWidget *parent = 0);
     ~RelationWindow();
 
 protected:
+    /** methode qui se lance au moment de l'affichage de cette fenetre
+    */
     void showEvent(QShowEvent *ev);
 
 private slots:

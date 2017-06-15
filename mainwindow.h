@@ -26,6 +26,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    /** constructeur de mainwindow
+     */
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -144,7 +146,7 @@ private:
 
     // show hide interface
     /** C'est une state machine qui gère le changement entre des différents état de l'interface
-    @param newStatus[in]
+    @param [in] newStatus
     */
     void setMainWindowState(EnumWindowState newStatus);
     /** Afficher la liste de version, date de création/modification etc.
@@ -155,7 +157,7 @@ private:
     void hideNoteCommon();
     /** Afficher tous éléments qui concernent la corbeille, par exemple la bouton de restaurer, etc
      * et changer l'apparence d'affichage de contenu de note selon son type: article, task, resource
-    @param noteType[in]
+    @param [in] noteType
     */
     void showTrash(EnumNoteType noteType);
     /** Cacher tous éléments qui concernent la corbeille
@@ -168,7 +170,7 @@ private:
     */
     void hideTree();
     /** Afficher une des interfaces parmi article, task, resource selon le type
-    @param noteType[in]
+    @param [in] noteType
     */
     void setNoteView(EnumNoteType noteType);
     /** Changer l'apparance de l'interface de corbeille pour article, task, resource
