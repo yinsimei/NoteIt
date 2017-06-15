@@ -40,7 +40,7 @@ public:
     vector<Couple> getCouples(int relationIdx) const;
 
     void clear();
-    void addRelation(int relationIdx, const Relation & r);
+    int addRelation(int relationIdx, const Relation & r);
     bool addCouple(int relationIdx, int id1, int id2, QString label);
     void deleteCouple(int relationIdx,int id1, int id2);
     void deleteCouple(int relationIdx, Couple c);

@@ -75,14 +75,15 @@ void RelationManager::clear() {
     relations.clear();
 }
 
-void RelationManager::addRelation(int relationIdx, const Relation & r) {
+int RelationManager::addRelation(int relationIdx, const Relation & r) {
     if (relationIdx < 0) {
         Relation *newRelation = new Relation(r);
         relations.push_back(newRelation);
-        return;
+        return relations.size() - 1;
     }
     relations[relationIdx]->setTitle(r.getTitle());
     relations[relationIdx]->setDescp(r.getDescp());
+    return relationIdx;
 }
 
 void RelationManager::addRelation(QString relationTitle, QString relationDescp, bool oriented, bool reference) {

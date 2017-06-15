@@ -144,7 +144,7 @@ void RelationWindow::on_relation_saveButton_clicked()
     Relation r(title,
                ui->relation_descpEdit->toPlainText(),
                ui->relation_orientedCheck->isChecked());
-    RelationManager::getInstance().addRelation(currRelationIdx, r);
+    currRelationIdx = RelationManager::getInstance().addRelation(currRelationIdx, r);
     resetRelationList();
 }
 
